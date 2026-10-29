@@ -80,6 +80,12 @@ EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
   (facade picks, props, color variation) — deterministic so maps are stable.
 - Landmarks (subway entrance, bodega, basketball court) are named tiles used for
   navigation and as musician "stages".
+- Blocks are **raised themed islands** with curbs (W3, REF-002): `school`, `park`,
+  `court`, `skate`, `shops`, `houses`, `apartments`, `gas`, `lot`, `cemetery`…
+- **Spawn = the player's middle school** block. Musicians stand at street corners,
+  courts, plazas and stoops (`EncounterDef.position` snaps to sidewalk tiles).
+- **Set pieces** span blocks and give the city a shape: river + drawbridge,
+  elevated train line, highway overpass. Stored as `SetPieceDef` with a footprint.
 
 ### 4.2 Rendering
 - **Modular kit**: road, sidewalk, curb corner, crosswalk, facade segments
@@ -92,10 +98,15 @@ EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
   player, baked AO in textures, emissive windows/streetlights for evening mood.
 
 ### 4.3 Player & camera
-- Kinematic character capsule (Rapier) — WASD/joystick, run, interact.
-- Third-person follow camera with collision pull-in; optional fixed isometric
-  mode (likely the better fit for phones — decide from references).
-- Interact prompt when inside an `EncounterDef.radius`.
+- Kinematic character capsule (Rapier). Controls: tap-to-move + virtual
+  joystick (touch), WASD (desktop), and an interact button (REF-002 A/B buttons).
+- **Fixed isometric-style follow camera** (W5): narrow-FOV perspective, high
+  angle, smooth follow, pinch/scroll zoom between close (REF-001) and overview
+  (REF-002). No collision handling needed, since nothing comes between a camera
+  this high and the player. Buildings in front of the player fade/cut away.
+- Interact prompt when inside an `EncounterDef.radius`; off-screen musicians/
+  objectives get an edge arrow (U4).
+- Post-processing stack per W7, behind quality presets (`clean`, `mood`, `full`).
 
 ### 4.4 Map view
 - **Minimap**: 2D canvas/SVG drawn from `WorldDef` (not a second 3D render) —
@@ -114,8 +125,12 @@ saving `assets/data/worlds/*.json`. Same renderer as the game for preview.
 Blender round-trip for every variation — and accept Blender work when it exists.
 
 ### 5.1 Character system
-- **One base skeleton** (Mixamo-compatible humanoid naming) so every character
-  shares animations (idle, walk, run, perform loops, win/lose emotes).
+- **Two renditions per character** (ADR-0002, C2): a chunky pixel-textured
+  **map** rendition (REF-004) and a lanky faceted **hero** rendition (REF-005) for
+  battle and the studio. One `CharacterDef`; each part has `@map` and `@hero` meshes.
+- **Two rigs, shared bone names** (Mixamo-compatible naming) so every
+  animation (idle, walk, run, perform loops, win/lose emotes) is authored once and
+  retargeted to both.
 - **Slot-based parts**, each a skinned GLB bound to that skeleton:
   `head, hair, face, torso, legs, feet, hands, hat, accessory, instrument`.
 - **Body params** via morph targets / bone scales: height, build, head size
@@ -151,6 +166,35 @@ MusicianDef  { id, character: CharacterDef|ref, style: 'bucket'|'sax'|..., tier,
 - Skinned parts must use `rig.humanoid.v1` bone names exactly.
 - Studio's import validator enforces this and reports problems (details in `.claude/skills/asset-pipeline`).
 
+### 5.4 Asset creation workflow (concept → game)
+The references are 2D concept art. The studio is where 2D concept becomes a
+game-ready 3D asset:
+
+1. **Concept** (2D): style sheet + per-character **turnarounds** (front, side,
+   back, 3/4, ideally T-pose) → `docs/references/` or `assets/concept/`.
+2. **Mesh**, using whichever is fastest per asset:
+   - **Procedural in the studio**: the faceted low-poly style (C5, W6) is very
+     buildable from primitives (boxes/cylinders, then bevel and taper). Best for
+     hats, drums, buckets, shoes, props, world tiles.
+   - **AI image-to-3D** (Meshy, Tripo, Rodin…) from turnarounds, then cleanup.
+     Good for heads and outfits. Output goes through the same import validator.
+   - **Blender** for anything hero-critical, and for retopology/cleanup.
+3. **Rig**: auto-fit to our rig (Mixamo auto-rig or Blender with our bone-name
+   template), so animations are shared.
+4. **Studio pass**: import, validate (scale/origin/bones/budget), assign palette
+   slots, tune proportions, preview in game lighting, compare side by side
+   against the concept sheet (an overlay of the reference image in the viewport).
+5. **Map rendition**: generate from the hero version (decimate, block out, bake
+   to a 128 px pixel texture), then touch up.
+6. **Export**: `CharacterDef` JSON + optimized GLBs → `assets/`.
+
+**About Babylon.js:** its online tools, the Playground (live code editor),
+Sandbox (drag-and-drop GLB viewer) and Inspector (live scene debugger), are
+excellent and engine-agnostic for checking GLBs. We use them as free utilities
+but **keep Three.js/R3F as the runtime** (ADR-0001). Our studio takes the same
+ideas into our own pipeline: live tweak panels (leva), a scene inspector, a
+reference-image overlay, and one-click export to our data formats.
+
 ## 6. Hooks for future battle system (define now, build later)
 - `EncounterDef → MusicianDef → BattleConfig { rounds, bpm, patternLength, inputSet, timingWindowMs }`
 - Difficulty is a **function of (musician tier, player level)** producing a
@@ -165,7 +209,7 @@ MusicianDef  { id, character: CharacterDef|ref, style: 'bucket'|'sax'|..., tier,
 |---|---|
 | Draw calls on screen | ≤ 150 |
 | Triangles on screen | ≤ 300k |
-| Character | ≤ 15k tris, 1 material atlas, ≤ 60 bones |
+| Character (hero / map) | ≤ 15k / ≤ 2k tris, 1 atlas each, ≤ 60 bones |
 | Textures | 1024² atlases, KTX2/Basis compressed |
 | Shadow maps | 1 × 2048, following player |
 | Initial download | ≤ 25 MB, then stream per district |
@@ -181,8 +225,9 @@ MusicianDef  { id, character: CharacterDef|ref, style: 'bucket'|'sax'|..., tier,
    character JSON + GLBs can be loaded by a native engine later.
 
 ## 9. Open questions (answer with references)
-- Art style: toon-shaded low-poly vs. chunky stylized (e.g. "Jet Set Radio"-ish) vs. something else?
-- Camera: third-person over-the-shoulder vs. isometric vs. switchable?
+- ~~Art style~~: flat-shaded low-poly world; two-rendition characters (REF-001–005).
+- ~~Camera~~: fixed isometric-style follow camera with zoom (W5).
 - City setting: one real-inspired neighborhood (NYC? Philly?) or a fictional mash-up?
-- Day/night cycle, or a fixed golden-hour/evening mood?
+- Weather/time: rain/dusk signature mood (W4). Rotate weather/time, or fix it per district?
+- Instruments: everyone plays buckets styled by genre, or real drums? (see `docs/characters/ROSTER.md`)
 - Online features ever (leaderboards, shared characters)? Affects whether we add a backend.

@@ -4,14 +4,25 @@ Newest first. Each entry: what changed, decisions made, open questions, next up.
 Maintained by the `log-progress` skill.
 
 ## Next up
-1. Collect references from the user → `add-reference` → firm up VISUAL_PRINCIPLES (art style, camera).
-2. Phase 0: scaffold pnpm workspace (`apps/game`, `apps/studio`, `packages/schema|engine|world|characters|ui`), Vite + R3F, lint/test.
-3. Phase 1 spike: grid of gray-box blocks from a `WorldDef` JSON, walking capsule, follow camera, 2D minimap.
+1. Phase 0: scaffold pnpm workspace (`apps/game`, `apps/studio`, `packages/schema|engine|world|characters|ui`), Vite + R3F, lint/test.
+2. Phase 1 spike: gray-box themed block islands from a `WorldDef` JSON, school spawn, iso follow camera (W5), tap-to-move, 2D minimap.
+3. Studio spike: viewport in game lighting + reference-image overlay + procedural faceted primitives; block out the marching kid (hero) from REF-005.
+4. Get turnarounds (front/side/back/3-4) for the six drummers from the user.
+5. Decide bucket vs. drum instruments (ROSTER.md).
 
 ## Open questions
 See `docs/ARCHITECTURE.md` §9.
 
 ---
+
+## 2026-10-29 — Session 1b: first references
+- Added REF-001–005 (3 world screens, 2 character sheets) with take/avoid notes.
+- VISUAL_PRINCIPLES: confirmed W1–W4, C1–C3, U2; added W5 iso camera, W6 flat low-poly,
+  W7 optional miniature post-processing, W8 cloud framing, C4/C5 map vs. hero styles, C6 instruments, U4 edge HUD.
+- ADR-0002 (proposed): one CharacterDef, two renditions (map/hero), two rigs sharing bone names.
+- ARCHITECTURE: themed block islands, school spawn, set pieces, iso camera, §5.4 concept→game workflow, Babylon tools as utilities only.
+- New `docs/characters/ROSTER.md`: six drummers (rap, metal, country, jazz, marching, K-pop) mapped to REF-005 silhouettes.
+- Learned: REF-005's six figures already line up with the six genres. Treat it as the canonical silhouette source.
 
 ## 2026-10-29 — Session 1: plan & memory system
 - Repo was empty; added `CLAUDE.md`, architecture plan, provisional visual principles,
