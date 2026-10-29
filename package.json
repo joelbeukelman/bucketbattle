@@ -1,0 +1,21 @@
+{
+  "name": "bucketbattle",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "dev": "pnpm --filter @bb/game dev",
+    "build": "pnpm --filter @bb/game build",
+    "test": "vitest run",
+    "typecheck": "pnpm -r typecheck",
+    "validate:worlds": "tsx tools/validate-worlds.ts",
+    "shots": "tsx tools/screenshot.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "playwright": "1.63.0",
+    "tsx": "^4.19.2",
+    "typescript": "~5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

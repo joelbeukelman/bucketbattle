@@ -1,0 +1,71 @@
+{
+  "id": "world.nyc.level-01",
+  "name": "Level 1 — The Bucket Corner",
+  "cityKit": "kit.nyc",
+  "tileSize": 4,
+  "blockSize": [12, 6],
+  "sidewalk": 3,
+  "streets": {
+    "columns": ["street", "avenue", "avenue", "avenue", "street"],
+    "rows": ["street", "street", "street", "street"]
+  },
+  "blocks": [
+    [
+      { "theme": "towers", "seed": 101, "maxStories": 16 },
+      {
+        "theme": "school", "seed": 102,
+        "lots": [
+          { "kind": "building", "rect": [0, 0, 7, 6], "stories": 4, "landmark": "school", "roofSign": "SCHOOL" },
+          { "kind": "open", "rect": [7, 0, 5, 6], "feature": "plaza" }
+        ]
+      },
+      {
+        "theme": "skate", "seed": 103,
+        "lots": [
+          { "kind": "open", "rect": [0, 0, 6, 6], "feature": "skate" },
+          { "kind": "open", "rect": [6, 0, 6, 6], "feature": "court" }
+        ]
+      },
+      { "theme": "towers", "seed": 104, "maxStories": 14 }
+    ],
+    [
+      { "theme": "apartments", "seed": 201, "maxStories": 6 },
+      {
+        "theme": "shops", "seed": 202, "maxStories": 4,
+        "lots": [
+          { "kind": "building", "rect": [0, 3, 3, 3], "stories": 3, "landmark": "vinyl-shop", "roofSign": "VINYL" }
+        ]
+      },
+      { "theme": "park", "seed": 203 },
+      {
+        "theme": "shops", "seed": 204, "maxStories": 4,
+        "lots": [
+          { "kind": "building", "rect": [9, 0, 3, 3], "stories": 2, "landmark": "music-store", "roofSign": "MUSIC" }
+        ]
+      }
+    ],
+    [
+      {
+        "theme": "home", "seed": 301, "maxStories": 3,
+        "lots": [
+          { "kind": "building", "rect": [3, 3, 3, 3], "stories": 3, "landmark": "home", "roofSign": "HOME" }
+        ]
+      },
+      { "theme": "houses", "seed": 302, "maxStories": 3 },
+      { "theme": "garden", "seed": 303 },
+      { "theme": "apartments", "seed": 304, "maxStories": 6 }
+    ]
+  ],
+  "spawn": { "position": { "block": [2, 0], "offset": [21, 28.5] }, "facing": 180 },
+  "encounters": [
+    {
+      "id": "enc.level-01.busker",
+      "musicianId": "musician.busker.bucket",
+      "label": "Bucket Busker",
+      "position": { "block": [1, 1], "offset": [1.5, 28.5] },
+      "facing": 225,
+      "radius": 5,
+      "levelRequired": 0
+    }
+  ]
+}

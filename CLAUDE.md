@@ -36,6 +36,10 @@ Studio (a stopgap between Blender and asset generation). Battle mechanics are
 5. **Visual decisions trace back to a reference or a principle.** If a new look
    isn't covered by `VISUAL_PRINCIPLES.md`, propose an addition — don't improvise silently.
 
+## Run
+`pnpm install` · `pnpm dev` (game) · `pnpm test` · `pnpm typecheck` · `pnpm shots` (screenshots, needs dev running).
+Built so far: grey-box level 1 (see `docs/PROGRESS.md`).
+
 ## Session ritual
 - **Start:** read `docs/PROGRESS.md` → "Next up" and any open questions.
 - **When the user shares a link or screenshot:** run the `add-reference` skill.

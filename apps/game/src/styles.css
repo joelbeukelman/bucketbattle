@@ -1,0 +1,11 @@
+:root {
+  --bb-accent: #ffd23f;
+  --bb-ink: #1d1d22;
+  --bb-paper: #f6f3ec;
+  --bb-a: #ff9f1c;
+  --bb-b: #e63946;
+  --bb-radius: 14px;
+  font-family: ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; overflow: hidden; background: #d9d4ca; touch-action: none; user-select: none; -webkit-user-select: none; }

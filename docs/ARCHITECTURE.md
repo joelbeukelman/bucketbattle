@@ -129,7 +129,7 @@ EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
 - **District / city select**: each district shown as a 3D **diorama slab**
   (REF-006, W8) using the map renditions at low LOD. It doubles as a
   level-select screen and later as the screen for picking a city.
-- A shared `worldToMap()` projection in `packages/world` so 3D and map always agree.
+- A shared `createMapProjection()` in `packages/world` so 3D and map always agree.
 
 ### 4.5 World editor (lightweight, inside studio)
 A top-down grid painter to place block types, landmarks and encounter points,
