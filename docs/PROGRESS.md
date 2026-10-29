@@ -7,7 +7,7 @@ Maintained by the `log-progress` skill.
 1. Phase 0: scaffold pnpm workspace (`apps/game`, `apps/studio`, `packages/schema|engine|world|characters|ui`), Vite + R3F, lint/test.
 2. Phase 1 spike: gray-box themed block islands from a `WorldDef` JSON (`kit.nyc`), home spawn → corner bucket stage → school, iso follow camera (W5), tap-to-move, 2D minimap.
 3. Studio spike: viewport in game lighting + reference-image overlay + procedural faceted primitives; block out the marching kid (hero) from REF-005.
-4. Get turnarounds (front/side/back/3-4) for the six drummers from the user.
+4. User generating turnarounds via `docs/characters/PROMPTS.md` (7 characters incl. busker); file them with `add-reference`.
 5. Get a reference for the level-1 corner bucket performer; confirm how futuristic the city is (W9).
 
 ## Open questions

@@ -21,7 +21,7 @@ Studio (a stopgap between Blender and asset generation). Battle mechanics are
 | Reference links/screenshots + what we took from each | `docs/references/README.md` |
 | Why we chose X over Y | `docs/decisions/ADR-*.md` |
 | Story premise, level structure | `docs/NARRATIVE.md` |
-| Character roster & design briefs | `docs/characters/ROSTER.md` |
+| Character roster & design briefs; image-gen prompts | `docs/characters/ROSTER.md`, `docs/characters/PROMPTS.md` |
 | What happened, session by session; what's next | `docs/PROGRESS.md` |
 | Repeatable workflows | `.claude/skills/*/SKILL.md` |
 
