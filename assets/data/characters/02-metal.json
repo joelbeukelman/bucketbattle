@@ -1,0 +1,73 @@
+{
+  "id": "02-metal",
+  "name": "Metal",
+  "genre": "Metal",
+  "body": {
+    "height": 1.8,
+    "headScale": 0.95,
+    "build": 0.75,
+    "shoulders": 0.9,
+    "legs": 1.12,
+    "earScale": 1.0
+  },
+  "skin": "#d9a07a",
+  "face": {
+    "lids": 0.6
+  },
+  "hair": {
+    "kind": "long-straight",
+    "color": "#12131a"
+  },
+  "hat": {
+    "kind": "beanie",
+    "color": "#1f2128"
+  },
+  "top": {
+    "kind": "tee",
+    "color": "#121214",
+    "color2": "#e0662a",
+    "color3": "#9b3fc4"
+  },
+  "bottom": {
+    "kind": "skinny-jeans",
+    "color": "#3f8f8a",
+    "color2": "#d9b8a0"
+  },
+  "socks": {
+    "kind": "none",
+    "color": "#333333"
+  },
+  "shoes": {
+    "kind": "hi-tops",
+    "color": "#1a1a1a",
+    "color2": "#d6262e",
+    "sole": "#f4f1ea"
+  },
+  "accessories": [
+    {
+      "kind": "sunglasses",
+      "color": "#0d0d0d"
+    },
+    {
+      "kind": "chain",
+      "color": "#c9a227"
+    },
+    {
+      "kind": "wristbands",
+      "color": "#2a2a2a",
+      "color2": "#c9a227"
+    }
+  ],
+  "instrument": {
+    "kind": "double-bucket",
+    "color": "#1b1b1b",
+    "color2": "#2a2a2a"
+  },
+  "reference": "docs/references/images/char-02-metal-front.jpg",
+  "history": [
+    {
+      "date": "2026-10-29",
+      "note": "First studio model, matched to the front crop of the accepted turnaround."
+    }
+  ]
+}

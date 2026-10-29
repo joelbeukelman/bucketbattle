@@ -1,0 +1,62 @@
+{
+  "id": "05-marching",
+  "name": "Marching",
+  "genre": "Marching band",
+  "body": {
+    "height": 1.62,
+    "headScale": 1.0,
+    "build": 0.9,
+    "shoulders": 1.0,
+    "legs": 1.0,
+    "earScale": 1.1
+  },
+  "skin": "#7a4a2e",
+  "face": {
+    "lids": 0.4
+  },
+  "hair": {
+    "kind": "buzz",
+    "color": "#1a1410"
+  },
+  "hat": {
+    "kind": "shako",
+    "color": "#1f4d36",
+    "color2": "#c9a227"
+  },
+  "top": {
+    "kind": "band-jacket",
+    "color": "#1f4d36",
+    "color2": "#c9a227"
+  },
+  "bottom": {
+    "kind": "trousers",
+    "color": "#121212",
+    "color2": "#b3262e"
+  },
+  "socks": {
+    "kind": "none",
+    "color": "#333333"
+  },
+  "shoes": {
+    "kind": "dress-shoes",
+    "color": "#111111",
+    "sole": "#111111"
+  },
+  "accessories": [
+    {
+      "kind": "sash",
+      "color": "#f2f0ea"
+    }
+  ],
+  "instrument": {
+    "kind": "marching-snare",
+    "color": "#e07b2e",
+    "color2": "#c9a227"
+  },
+  "history": [
+    {
+      "date": "2026-10-29",
+      "note": "First studio model from the roster brief (no turnaround yet)."
+    }
+  ]
+}

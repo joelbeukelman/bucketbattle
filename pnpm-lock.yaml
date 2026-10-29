@@ -26,6 +26,9 @@ importers:
 
   apps/game:
     dependencies:
+      '@bb/engine':
+        specifier: workspace:*
+        version: link:../../packages/engine
       '@bb/schema':
         specifier: workspace:*
         version: link:../../packages/schema
@@ -66,6 +69,70 @@ importers:
       vite:
         specifier: ^5.4.11
         version: 5.4.21(@types/node@22.20.5)
+
+  apps/studio:
+    dependencies:
+      '@bb/characters':
+        specifier: workspace:*
+        version: link:../../packages/characters
+      '@bb/engine':
+        specifier: workspace:*
+        version: link:../../packages/engine
+      '@bb/schema':
+        specifier: workspace:*
+        version: link:../../packages/schema
+      '@react-three/drei':
+        specifier: ^9.122.0
+        version: 9.122.0(@react-three/fiber@8.18.0(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(@types/react@18.3.31)(@types/three@0.170.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)(use-sync-external-store@1.7.0(react@18.3.1))
+      '@react-three/fiber':
+        specifier: ^8.18.0
+        version: 8.18.0(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      three:
+        specifier: ~0.170.0
+        version: 0.170.0
+      zustand:
+        specifier: ^5.0.2
+        version: 5.0.16(@types/react@18.3.31)(react@18.3.1)(use-sync-external-store@1.7.0(react@18.3.1))
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.0
+        version: 22.20.5
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.31
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.7(@types/react@18.3.31)
+      '@types/three':
+        specifier: ~0.170.0
+        version: 0.170.0
+      '@vitejs/plugin-react':
+        specifier: ^4.3.4
+        version: 4.7.0(vite@5.4.21(@types/node@22.20.5))
+      vite:
+        specifier: ^5.4.11
+        version: 5.4.21(@types/node@22.20.5)
+
+  packages/characters:
+    dependencies:
+      '@bb/schema':
+        specifier: workspace:*
+        version: link:../schema
+      three:
+        specifier: ~0.170.0
+        version: 0.170.0
+    devDependencies:
+      '@types/three':
+        specifier: ~0.170.0
+        version: 0.170.0
+
+  packages/engine: {}
 
   packages/schema:
     dependencies:

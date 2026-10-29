@@ -1,0 +1,70 @@
+{
+  "id": "03-country",
+  "name": "Country",
+  "genre": "Country",
+  "body": {
+    "height": 1.72,
+    "headScale": 1.0,
+    "build": 0.82,
+    "shoulders": 1.0,
+    "legs": 1.1,
+    "earScale": 1.0
+  },
+  "skin": "#4a2c1d",
+  "face": {
+    "lids": 0.45,
+    "beard": true
+  },
+  "hair": {
+    "kind": "buzz",
+    "color": "#141010"
+  },
+  "hat": {
+    "kind": "cowboy",
+    "color": "#b08a5a",
+    "color2": "#6b4a2b"
+  },
+  "top": {
+    "kind": "flannel-open",
+    "color": "#c62a2a",
+    "color2": "#1f2a5c",
+    "under": "#2ec4b0"
+  },
+  "bottom": {
+    "kind": "skinny-jeans",
+    "color": "#2b2c30"
+  },
+  "socks": {
+    "kind": "none",
+    "color": "#333333"
+  },
+  "shoes": {
+    "kind": "work-boots",
+    "color": "#f0a52a",
+    "color2": "#8a5a1a",
+    "sole": "#efe6d2"
+  },
+  "accessories": [
+    {
+      "kind": "chain",
+      "color": "#d4a52a",
+      "color2": "#d4a52a"
+    },
+    {
+      "kind": "earrings",
+      "color": "#d4a52a"
+    }
+  ],
+  "instrument": {
+    "kind": "snare",
+    "color": "#e07b2e",
+    "color2": "#c8c8c8"
+  },
+  "reference": "docs/references/images/char-03-country-front.jpg",
+  "history": [
+    {
+      "date": "2026-10-29",
+      "note": "First studio model, matched to the front crop of the accepted turnaround."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "01-rap",
+  "name": "Rap",
+  "genre": "Rap",
+  "body": {
+    "height": 1.55,
+    "headScale": 1.05,
+    "build": 0.9,
+    "shoulders": 1.0,
+    "legs": 1.0,
+    "earScale": 1.3
+  },
+  "skin": "#8a5a3c",
+  "face": {
+    "lids": 0.5
+  },
+  "hair": {
+    "kind": "twists",
+    "color": "#2a1c14"
+  },
+  "hat": {
+    "kind": "snapback-back",
+    "color": "#1c1f33"
+  },
+  "top": {
+    "kind": "hoodie",
+    "color": "#2f5466",
+    "color2": "#f0641e",
+    "color3": "#1c2a3a"
+  },
+  "bottom": {
+    "kind": "shorts",
+    "color": "#141414"
+  },
+  "socks": {
+    "kind": "tube",
+    "color": "#f2f0ea",
+    "color2": "#d23a2e"
+  },
+  "shoes": {
+    "kind": "chunky-sneakers",
+    "color": "#3b3f45",
+    "color2": "#f2b51d",
+    "sole": "#f2b51d"
+  },
+  "accessories": [
+    {
+      "kind": "chain",
+      "color": "#d4a52a"
+    }
+  ],
+  "instrument": {
+    "kind": "snare",
+    "color": "#c0392b",
+    "color2": "#c8c8c8"
+  },
+  "reference": "docs/references/images/char-01-rap-front.jpg",
+  "history": [
+    {
+      "date": "2026-10-29",
+      "note": "First studio model, matched to the front crop of the accepted turnaround."
+    }
+  ]
+}

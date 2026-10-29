@@ -1,0 +1,67 @@
+{
+  "id": "06-kpop",
+  "name": "K-pop",
+  "genre": "K-pop",
+  "body": {
+    "height": 1.55,
+    "headScale": 1.0,
+    "build": 0.85,
+    "shoulders": 1.0,
+    "legs": 1.0,
+    "earScale": 1.2
+  },
+  "skin": "#9a6542",
+  "face": {
+    "lids": 0.4
+  },
+  "hair": {
+    "kind": "dreads-up",
+    "color": "#3a2618"
+  },
+  "hat": {
+    "kind": "headband",
+    "color": "#f2efe8"
+  },
+  "top": {
+    "kind": "colorblock-jacket",
+    "color": "#2a9d95",
+    "color2": "#f0b030",
+    "color3": "#1f2a4a",
+    "under": "#c2357a"
+  },
+  "bottom": {
+    "kind": "shorts",
+    "color": "#4a5233"
+  },
+  "socks": {
+    "kind": "striped",
+    "color": "#2a9d95",
+    "color2": "#f0b030",
+    "color3": "#6a3a8a"
+  },
+  "shoes": {
+    "kind": "chunky-sneakers",
+    "color": "#e8502a",
+    "color2": "#2a9d95",
+    "sole": "#f4f1ea"
+  },
+  "accessories": [
+    {
+      "kind": "backpack",
+      "color": "#1f2a4a",
+      "color2": "#f0a030"
+    }
+  ],
+  "instrument": {
+    "kind": "practice-pad",
+    "color": "#2a2a2a",
+    "color2": "#444444"
+  },
+  "reference": "docs/references/images/char-06-kpop-front.jpg",
+  "history": [
+    {
+      "date": "2026-10-29",
+      "note": "First studio model, matched to the front crop of the accepted turnaround."
+    }
+  ]
+}

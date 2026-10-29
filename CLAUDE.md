@@ -37,8 +37,9 @@ Studio (a stopgap between Blender and asset generation). Battle mechanics are
    isn't covered by `VISUAL_PRINCIPLES.md`, propose an addition — don't improvise silently.
 
 ## Run
-`pnpm install` · `pnpm dev` (game) · `pnpm test` · `pnpm typecheck` · `pnpm shots` (screenshots, needs dev running).
-Built so far: grey-box level 1 (see `docs/PROGRESS.md`).
+`pnpm install` · `pnpm dev` (game) · `pnpm studio` (Character Workshop) · `pnpm test` · `pnpm typecheck` · `pnpm shots` / `pnpm studio:shots` (screenshots).
+Built so far: grey-box level 1; Character Workshop with all 7 characters — live link https://claude.ai/artifact/MFTEEDnycEzCvnRYUyRdbe.
+Character change requests follow the loop in `.claude/skills/character-studio/SKILL.md`.
 
 ## Session ritual
 - **Start:** read `docs/PROGRESS.md` → "Next up" and any open questions.

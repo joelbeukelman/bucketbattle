@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { live } from '../store';
+import { LIGHTING } from '@bb/engine';
 import { palette } from '../palette';
 
 /**
@@ -10,7 +11,7 @@ import { palette } from '../palette';
  */
 export function Lighting() {
   const sun = useRef<THREE.DirectionalLight>(null!);
-  const offset = new THREE.Vector3(-40, 55, 30);
+  const offset = new THREE.Vector3(...LIGHTING.sun.offset);
   useFrame(() => {
     const { x, z } = live.player;
     sun.current.position.set(x + offset.x, offset.y, z + offset.z);
@@ -19,11 +20,11 @@ export function Lighting() {
   });
   return (
     <>
-      <hemisphereLight args={['#dce6f2', '#8c8170', 1.1]} />
+      <hemisphereLight args={[LIGHTING.hemisphere.sky, LIGHTING.hemisphere.ground, LIGHTING.hemisphere.intensity]} />
       <directionalLight
         ref={sun}
-        color="#ffdcae"
-        intensity={2.4}
+        color={LIGHTING.sun.color}
+        intensity={LIGHTING.sun.intensity}
         castShadow
         shadow-mapSize={[2048, 2048]}
         shadow-bias={-0.0004}

@@ -10,7 +10,10 @@
     "typecheck": "pnpm -r typecheck",
     "validate:worlds": "tsx tools/validate-worlds.ts",
     "shots": "tsx tools/screenshot.ts",
-    "prompts": "tsx tools/build-prompts.ts"
+    "prompts": "tsx tools/build-prompts.ts",
+    "studio": "pnpm --filter @bb/studio dev",
+    "studio:shots": "tsx tools/studio-shots.ts",
+    "studio:publish": "tsx tools/publish-studio.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

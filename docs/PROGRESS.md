@@ -4,16 +4,28 @@ Newest first. Each entry: what changed, decisions made, open questions, next up.
 Maintained by the `log-progress` skill.
 
 ## Next up
-1. Play-test the grey box on a real iPhone (`pnpm dev`, open the Network URL) and check fps, zoom feel, and tap-to-move.
-2. Studio spike: `apps/studio` with game lighting from a shared `packages/engine`, a reference-image overlay, faceted primitives; block out the busker (map rendition).
-3. `CityKitDef` for `kit.nyc` (ADR-0003): move palette + theme→massing rules out of `apps/game/src/palette.ts`; add stoops, awnings, and fire escapes as the first kit pieces.
-4. World detail pass: storefront awnings/signs on shop ground floors, more roof variety (W10), place the six school kids as locked markers near the school.
-5. User: Marching turnaround; A-pose / expressions / instrument / map for the six characters with front crops; confirm how futuristic the city is (W9).
+1. Iterate characters by chat in the Character Workshop (https://claude.ai/artifact/MFTEEDnycEzCvnRYUyRdbe), one change request at a time.
+2. Map rendition: pixel-art textures (C4) instead of flat colors; tune chibi proportions against REF-004.
+3. Export: skinned GLB per character (GLTFExporter + real SkinnedMesh bound to the Mixamo-named pivots), then drop the busker model into the game at the bucket corner.
+4. Marching turnaround (user) → crop → match the model.
+5. Play-test the grey-box city on a phone; confirm how futuristic the city is (W9).
 
 ## Open questions
 See `docs/ARCHITECTURE.md` §9.
 
 ---
+
+## 2026-10-29 — Session 3: Character Workshop
+- `packages/schema/src/character.ts`: `CharacterDef` (body proportions, skin, face, one kind + colors per slot, accessories, instrument, reference, history).
+- `packages/characters`: procedural hard-faceted builder (C7) with Mixamo-named pivot rig, A-pose / idle / drumming poses,
+  hero + map renditions from the same data (ADR-0002). ~2.8k tris per hero model (budget 15k).
+- `assets/data/characters/*.json`: all seven characters matched to their front crops (Marching from the brief).
+- `apps/studio`: Character Workshop — character strip, live viewport (pose, battle/map/both, turntable), reference beside/overlay,
+  controls for every slot and color, drafts in the browser, dev "Save to repo", Copy JSON, history.
+- `packages/engine`: shared lighting preset used by game and studio.
+- Tools: `pnpm studio`, `pnpm studio:shots`, `pnpm studio:publish`. Live link published as an Artifact.
+- Process: compared every model against its concept, fixed head size (now ~27% of height), eye size, chunky shoes, U-shaped chain, thicker dreads.
+- Gotcha: Vite configs run in plain Node and can't import workspace TS packages; load them with `server.ssrLoadModule`.
 
 ## 2026-10-29 — Session 2f: round-2 turnarounds
 - New turnarounds for Busker, Metal, Country, Jazz, K-pop (outfits consistent, faces still mostly smooth); front crops made for all; looks updated from the images.

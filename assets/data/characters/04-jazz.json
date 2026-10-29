@@ -1,0 +1,72 @@
+{
+  "id": "04-jazz",
+  "name": "Jazz",
+  "genre": "Jazz",
+  "body": {
+    "height": 1.5,
+    "headScale": 1.05,
+    "build": 0.85,
+    "shoulders": 0.95,
+    "legs": 1.0,
+    "earScale": 1.15
+  },
+  "skin": "#e0a77c",
+  "face": {
+    "lids": 0.55
+  },
+  "hair": {
+    "kind": "braids",
+    "color": "#121212"
+  },
+  "hat": {
+    "kind": "beanie",
+    "color": "#3a3263"
+  },
+  "top": {
+    "kind": "tee",
+    "color": "#f2efe8"
+  },
+  "bottom": {
+    "kind": "baggy-shorts",
+    "color": "#1a1b1f"
+  },
+  "socks": {
+    "kind": "striped",
+    "color": "#2fb8a8",
+    "color2": "#e0402e",
+    "color3": "#e0402e"
+  },
+  "shoes": {
+    "kind": "work-boots",
+    "color": "#d9a85a",
+    "color2": "#b07a35",
+    "sole": "#efe6d2"
+  },
+  "accessories": [
+    {
+      "kind": "suspenders",
+      "color": "#1a1a1a"
+    },
+    {
+      "kind": "wristbands",
+      "color": "#2fb8a8",
+      "color2": "#e6a92a"
+    },
+    {
+      "kind": "earrings",
+      "color": "#e0b030"
+    }
+  ],
+  "instrument": {
+    "kind": "snare",
+    "color": "#3a3263",
+    "color2": "#c8c8c8"
+  },
+  "reference": "docs/references/images/char-04-jazz-front.jpg",
+  "history": [
+    {
+      "date": "2026-10-29",
+      "note": "First studio model, matched to the front crop of the accepted turnaround."
+    }
+  ]
+}

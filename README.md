@@ -6,7 +6,8 @@ battle them in call-and-response rounds. Start with `CLAUDE.md` and `docs/`.
 ## Run it
 ```bash
 pnpm install
-pnpm dev          # http://localhost:5173 (also reachable from a phone on the same Wi-Fi)
+pnpm dev          # game: http://localhost:5173 (also reachable from a phone on the same Wi-Fi)
+pnpm studio       # Character Workshop: http://localhost:5174
 ```
 
 **Controls:** WASD / arrows to walk (Shift to run), click or tap to walk to a spot,
@@ -24,6 +25,10 @@ pnpm shots            # with `pnpm dev` running: screenshots → docs/progress/<
 | Path | What |
 |---|---|
 | `apps/game` | The game (Vite + React Three Fiber) |
+| `apps/studio` | Character Workshop: live faceted models, controls, concept reference |
+| `packages/characters` | CharacterDef → hard-faceted rigged model (hero + map renditions) |
+| `packages/engine` | Shared look settings (lighting) for game and studio |
+| `assets/data/characters` | One JSON per character |
 | `packages/schema` | Zod schemas: `WorldDef`, blocks, lots, encounters |
 | `packages/world` | World layout, seeded block generator, collision, map projection |
 | `assets/data/worlds` | World data: `level-01.json` is the bucket-corner level |

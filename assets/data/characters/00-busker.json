@@ -1,0 +1,66 @@
+{
+  "id": "00-busker",
+  "name": "Bucket Busker",
+  "genre": "Level 1 opener",
+  "body": {
+    "height": 1.68,
+    "headScale": 1.0,
+    "build": 0.9,
+    "shoulders": 1.05,
+    "legs": 1.0,
+    "earScale": 1.25
+  },
+  "skin": "#8a5a3c",
+  "face": {
+    "lids": 0.5
+  },
+  "hair": {
+    "kind": "buzz",
+    "color": "#1a1410"
+  },
+  "hat": {
+    "kind": "beanie",
+    "color": "#262b3f",
+    "color2": "#e94fb0"
+  },
+  "top": {
+    "kind": "bomber",
+    "color": "#c88a2e",
+    "color2": "#2a2a2a",
+    "color3": "#2a2a2a",
+    "under": "#1f4a3e"
+  },
+  "bottom": {
+    "kind": "cargo-pants",
+    "color": "#5a6b3a",
+    "color2": "#3a4527"
+  },
+  "socks": {
+    "kind": "none",
+    "color": "#333333"
+  },
+  "shoes": {
+    "kind": "hi-tops",
+    "color": "#1c1c1c",
+    "color2": "#d6262e",
+    "sole": "#f4f1ea"
+  },
+  "accessories": [
+    {
+      "kind": "patches",
+      "color": "#e94fb0"
+    }
+  ],
+  "instrument": {
+    "kind": "bucket-stack",
+    "color": "#e3492f",
+    "color2": "#2a8fb3"
+  },
+  "reference": "docs/references/images/char-00-busker-front.jpg",
+  "history": [
+    {
+      "date": "2026-10-29",
+      "note": "First studio model, matched to the front crop of the accepted turnaround."
+    }
+  ]
+}

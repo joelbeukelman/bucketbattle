@@ -162,6 +162,8 @@ MusicianDef  { id, character: CharacterDef|ref, style: 'bucket'|'sax'|..., tier,
 ```
 
 ### 5.2 Studio features (MVP → later)
+_Status 2026-10-29: MVP items 1–5 built in `apps/studio` (procedural faceted parts instead of GLB parts for now); import, GLB export and the map pixel-bake are next._
+
 **MVP**
 1. Viewport with orbit camera, turntable, ground grid, game-matching lighting.
 2. Part browser per slot (thumbnails), swap live.
