@@ -22,6 +22,9 @@ Each entry is added with the `add-reference` skill. Keep the format:
 | REF-003 | Clean iso snow/industrial scene | world |
 | REF-004 | Character sheet: map-scale kids | characters |
 | REF-005 | Character sheet: battle-scale drummers | characters |
+| REF-006 | Diorama: school district slab | world (structure) |
+| REF-007 | Voxel-style dense grid | world (structure) |
+| REF-008 | Low-poly grid with avenues | world (structure) |
 
 ---
 
@@ -105,3 +108,51 @@ Each entry is added with the `add-reference` skill. Keep the format:
 - Avoid: the facial expressions are all the same. Battle needs a few
   expression/emote variants per character.
 - Principles touched: C1, C2, C3, C5 (new)
+
+### REF-006 — Diorama: school district slab
+- Source: `images/ref-006-diorama-school-district.jpg` (user, 2026-10-29; "structural map reference")
+- Area: world (structure)
+- Observed: one neighborhood cut out as a **diorama slab** with a soil
+  cross-section edge on a neutral background. A large brick **school** with
+  lettering and a clock, a front plaza and a monument, next to a **skate park +
+  graffiti court**. Music landmarks: **"VINYL SHOP"** and a music store with
+  signage. Mostly 2–5 story brick walk-ups and storefronts with awnings, a few
+  towers at the back, red-roof houses at the edge, community garden plots and a
+  tennis court near the front. **Rooftops are full of detail**: AC units, water
+  tanks, antennas, satellite dishes. Graffiti/murals on many walls. Blocks are
+  split into **several lots** with separate buildings. Lots of greenery.
+- Take: the diorama slab as the **full-map / district-select view**; a school +
+  skate + court cluster as the level-1 hub; music landmarks; rooftop clutter;
+  blocks split into lots; murals as the "human-made" layer (W9).
+- Avoid: realistic textures and dense detail at this fidelity. We keep the
+  REF-001/002 flat low-poly look.
+- Principles touched: W3 (revised), W6 (revised), W8 (revised), W10–W12 (new)
+
+### REF-007 — Voxel-style dense grid
+- Source: `images/ref-007-voxel-dense-grid.jpg` (user, 2026-10-29; "structural map reference")
+- Area: world (structure)
+- Observed: very high, close to top-down iso camera over a dense grid. A
+  **school with its name on the roof**, a skate park right next to it, several
+  courts (basketball, tennis, soccer) used as open blocks, vinyl/record shops on
+  corners. **Crosswalks at every intersection**, traffic lights, a yellow center
+  line. Warm brick/terracotta base with a few pastel accent buildings (teal,
+  lilac). Roofs mix flat with clutter and pitched with dark or terracotta tiles.
+  Voxel-like chunky props and tiny people.
+- Take: rhythm of the street grid; open court blocks as breathing room and
+  natural stages for musicians; signage on roofs so you can tell what a building
+  is from above; a few pastel buildings as accents among the brick.
+- Avoid: everything packed equally dense. The player needs clear walking routes and open space at stages.
+- Principles touched: W3, W10, W12
+
+### REF-008 — Low-poly grid with avenues
+- Source: `images/ref-008-lowpoly-avenues-grid.jpg` (user, 2026-10-29; "structural map reference")
+- Area: world (structure)
+- Observed: **street hierarchy**: wide multi-lane avenues and narrower side
+  streets, with large rectangular blocks. Tall towers at the edges and corners;
+  the middle is low-rise (school, courts, skate park, shops). Clean low-poly with
+  flat colors, close to our target look. Red-dirt planters, mixed tree types
+  including palms.
+- Take: avenue vs. street hierarchy (NYC-like); tall buildings around the edges with
+  a low-rise core so sightlines stay open; this look is close to our target fidelity.
+- Avoid: palm trees and red dirt in `kit.nyc`. Save them for other city kits (Dubai/LA-like).
+- Principles touched: W11, W12

@@ -15,6 +15,14 @@ See `docs/ARCHITECTURE.md` §9.
 
 ---
 
+## 2026-10-29 — Session 1d: structural map references
+- Added REF-006 (diorama school district), REF-007 (voxel dense grid), REF-008 (low-poly avenues).
+- Principles: W3 now "themed blocks split into lots"; W6 allows one shared facade trim sheet; W8 adds diorama slab
+  for district select; new W10 roofs-first, W11 low-rise core / tall edges, W12 avenue/street hierarchy + crosswalks.
+- ARCHITECTURE: `BlockDef.lots`, `LotDef`, `StreetDef`, music landmarks (vinyl shop, music store), height zoning, diorama district select.
+- Decision: structural refs inform **layout**, not fidelity. Fidelity stays REF-001/002 flat low-poly (W6).
+- Learned: all three refs put **school + skate park + courts** together. Use that as the level-1 hub layout.
+
 ## 2026-10-29 — Session 1c: narrative & cities
 - New `docs/NARRATIVE.md`: near-future world where AI has commodified art; a kid discovers they can make and perform music.
 - Level 1 = bucket street performer on a corner between home and school; each level brings a new drum + setting.

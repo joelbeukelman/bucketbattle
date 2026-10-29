@@ -69,7 +69,9 @@ The city is a **grid of blocks**, each block a grid of **tiles** (e.g. 4 m cells
 
 ```ts
 WorldDef   { id, name, cityKit: 'kit.nyc', blockSize: [w,d] (tiles), blocks: BlockDef[][], spawn, encounters: EncounterDef[] }
-BlockDef   { type: 'buildings'|'park'|'plaza'|'lot', seed, tiles?: TileRef[][], landmark? }
+BlockDef   { theme: BlockTheme, seed, lots: LotDef[], landmark? }
+LotDef     { rect: [x,z,w,d] (tiles), kind: 'building'|'open', buildingId?|featureId?, stories?, roofSign? }
+StreetDef  { axis: 'x'|'z', index, class: 'avenue'|'street' }   // avenue 4 lanes, street 2 lanes
 TileRef    { tileId: 'tile.road.straight', rot: 0|90|180|270, variant? }
 EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
 ```
@@ -80,8 +82,15 @@ EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
   (facade picks, props, color variation) — deterministic so maps are stable.
 - Landmarks (subway entrance, bodega, basketball court) are named tiles used for
   navigation and as musician "stages".
-- Blocks are **raised themed islands** with curbs (W3, REF-002): `school`, `park`,
-  `court`, `skate`, `shops`, `houses`, `apartments`, `gas`, `lot`, `cemetery`…
+- Blocks are **raised themed islands** with curbs, split into **lots** (W3,
+  REF-002/006/007): `school`, `park`, `court`, `skate`, `shops`, `houses`,
+  `apartments`, `garden`, `plaza`, `gas`, `cemetery`… A block generator fills lots
+  from the theme + seed; authors can pin specific lots (e.g. the school building).
+- **Music landmarks** are a landmark category: vinyl shop, music store,
+  rehearsal space, record label… They act as stages and story locations, with roof signage (W10).
+- Street hierarchy (W12): rectangular blocks, avenues vs. streets, crosswalks and
+  signals generated at every intersection. Height zoning (W11): a per-block
+  `maxStories`, tall buildings only on edge blocks.
 - **Spawn = the player's home**; the **middle school** is the first landmark
   (level 1: the bucket performer on a corner between them, see `docs/NARRATIVE.md`).
   Musicians stand at street corners,
@@ -117,6 +126,9 @@ EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
   cheap, crisp, stylable. Shows player arrow, discovered musicians, landmarks.
 - **Full map**: same renderer full-screen with pan/zoom, fog-of-war for
   undiscovered blocks, tap a musician to set a waypoint.
+- **District / city select**: each district shown as a 3D **diorama slab**
+  (REF-006, W8) using the map renditions at low LOD. It doubles as a
+  level-select screen and later as the screen for picking a city.
 - A shared `worldToMap()` projection in `packages/world` so 3D and map always agree.
 
 ### 4.5 World editor (lightweight, inside studio)

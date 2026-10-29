@@ -14,10 +14,13 @@ Format for each principle: **rule** — why — how to check it.
   sparing accents. Musicians and their stage spot carry saturated color plus a
   marker (light pool or icon) at map zoom. (REF-002, REF-003) — check: squint
   test on a phone-size screenshot finds every musician.
-- **W3 One theme per block, no visible repetition.** Each block is a themed
-  island (park, court, school, shops, houses, lot…). Variation comes from a seed:
-  color, signage, props. (REF-002) — check: no two adjacent blocks share a theme
-  and color variant.
+- **W3 Themed blocks split into lots, no visible repetition.** Each block is a
+  raised island with one dominant theme (school, shops, houses, court, park…)
+  that holds several **lots**, each with its own building or feature
+  (REF-006/007). Open blocks (courts, skate parks, gardens, plazas) break up the
+  built ones and serve as stages (REF-002/007). Variation comes from a seed:
+  color, signage, props. — check: no two adjacent blocks share a theme +
+  color variant; each block has ≥ 2 distinct lots.
 - **W4 Mood lighting.** Warm low key light, long soft shadows, cool fill;
   emissive windows, neon and signs as accents with mild bloom. Rain/dusk is the
   signature mood; clear daylight (REF-003) is a supported variant. (REF-001, REF-002)
@@ -27,14 +30,19 @@ Format for each principle: **rule** — why — how to check it.
   overview (REF-002). The player can't rotate it freely in v1. (REF-001, REF-002)
 - **W6 Flat-shaded low-poly, no busy textures.** World surfaces are colored
   through palettes and vertex colors; painted detail only for graphic
-  elements (checker trim, lane lines, signs). (REF-001, REF-003)
+  elements (checker trim, lane lines, signs, murals). Facades may use **one shared
+  low-res trim sheet** for windows/brick courses. Detail comes from shape and
+  props, not photo textures. Structural refs (REF-006–008) inform layout, not
+  fidelity. (REF-001, REF-003, REF-008)
 - **W7 Miniature post-processing, every effect optional.** Effects in order of
   cost: edge vignette → cloud shadows (projected texture, cheap) → bloom on
   emissives → screen-edge blur (tilt-shift) → subtle CRT/scanline. Each one
   can be switched off; the "clean" preset matches REF-003. (REF-001)
 - **W8 Clouds frame the world.** Soft white clouds/fog at the screen edges and
   at the world's boundary. They hide where the world ends and areas still
-  loading, and on the full map they mark undiscovered areas. (REF-002)
+  loading, and on the full map they mark undiscovered areas. (REF-002) On the
+  full-map / district-select screen, a district is shown as a **diorama slab** with
+  a soil edge on a neutral background. (REF-006)
 
 - **W9 Handmade vs. machine-made [provisional].** The near-future city (NARRATIVE.md)
   is recognizable but has a layer of AI content: uniform glossy screens and
@@ -43,6 +51,18 @@ Format for each principle: **rule** — why — how to check it.
   art, buskers, the player's performances) are **warm, saturated, imperfect,
   hand-painted**. This reinforces W2. — check: in a screenshot you can tell which
   elements are "human" and which are "AI".
+
+- **W10 Roofs are the main surface.** The camera mostly sees roofs, so roofs get the
+  detail: AC units, water tanks, antennas, skylights, rooftop gardens, and
+  **readable roof signage** on landmarks (SCHOOL, VINYL). (REF-006/007) — check: at
+  overview zoom you can name the school and the music landmarks from the roof alone.
+- **W11 Low-rise core, tall edges.** Play areas are 1–5 stories; towers sit at
+  district edges/background so they frame the area without hiding streets or
+  the player. Anything taller than ~5 stories in front of the player fades out.
+  (REF-006/008)
+- **W12 Street hierarchy and crossings.** Wide avenues (4 lanes) and narrow
+  streets (2 lanes), rectangular NYC-like blocks; crosswalks at every
+  intersection, yellow center lines, traffic lights. (REF-007/008)
 
 ## Characters
 - **C1 Silhouette first.** Each musician is identifiable by silhouette alone:
@@ -74,5 +94,6 @@ Format for each principle: **rule** — why — how to check it.
 
 ## Change log
 - 2026-10-29: initial provisional set.
+- 2026-10-29: REF-006–008 added. Revised W3 (lots), W6 (trim sheet), W8 (diorama map); added W10–W12.
 - 2026-10-29: W9 added (provisional) from the narrative premise.
 - 2026-10-29: REF-001–005 added. Confirmed W1–W4, C1–C3, U2; added W5–W8, C4–C6, U4.
