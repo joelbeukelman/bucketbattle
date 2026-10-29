@@ -168,10 +168,17 @@ and show on the run sheet. The descriptions in prompt-kit.json were rewritten to
 | `images/char-01-rap-turnaround.jpg` | Rap | ✅ Style anchor (C5, C7). Front crop `char-01-rap-front.jpg` is the faceted `--sref` for all hero prompts. |
 | `images/char-01-rap-map.jpg` | Rap (map) | ⚠️ Pixel textures fit C4, proportions still lanky. Re-run with the chibi-first prompt. |
 | `images/char-00-busker-instrument.jpg` | Bucket Busker | ✅ Faceted. Reads as a barrel with a hose more than paint buckets; fine as direction. |
+| `images/char-06-kpop-turnaround.jpg` | K-pop | ✅ Outfit consistent, good back view. ⚠️ Smooth face (C7). |
+| `images/char-04-jazz-turnaround.jpg` | Jazz | ✅ Outfit consistent. ⚠️ Smooth face (C7); stray cap brim in side view. |
+| `images/char-03-country-turnaround.jpg` | Country | ✅ Most faceted of the batch. ⚠️ Has a beard, reads adult. |
+| `images/char-02-metal-turnaround.jpg` | Metal | ✅ Consistent, flat clean planes; borderline on C7. No side view. |
+| `images/char-00-busker-turnaround.jpg` | Bucket Busker | ⚠️ View 2 off-model; smooth face (C7). Reference cropped from the 3/4 view. |
 | `images/explore/char-00-busker-*.jpg` | Bucket Busker | ❌ Smooth/Pixar shading (breaks C7). Kept as outfit reference: patched beanie, mustard patch bomber, camo cargos. A-pose and expressions worked well compositionally. |
 | `images/explore/char-02-metal-*.jpg` | Metal | ❌ Smooth (breaks C7). Outfit reference. |
 | `images/explore/char-03-country-*.jpg` | Country | ❌ Smooth (breaks C7). Outfit reference; teal undershirt canonical. |
 | `images/explore/char-04-jazz-*.jpg` | Jazz | ❌ Smooth, inconsistent headwear (breaks C7). Outfit reference; purple beanie canonical. |
+
+Learned: even with a faceted `--sref` and `--no smooth shading`, Midjourney mostly returns smooth faces; outfits got far more consistent though (round 2, 2026-10-29).
 
 Learned: single-figure front crops as `--oref` fixed the lineup problem; the busker A-pose and expressions came back as one figure each.
 

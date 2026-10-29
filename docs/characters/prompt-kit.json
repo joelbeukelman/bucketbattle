@@ -102,11 +102,13 @@
       "name": "Bucket Busker",
       "genre": "Level 1 opener",
       "have": [
+        "turnaround",
+        "front",
         "instrument"
       ],
-      "note": "Must be hard-faceted poly like the kids (decided 2026-10-29). The first busker set was smooth/Pixar-like and moved to images/explore/ as outfit reference; the outfit stays. Re-roll the turnaround first, then the rest. The instrument sheet is faceted and kept.",
-      "look": "young street performer, light skin, black knit beanie with neon patches, oversized mustard bomber jacket covered in small sewn-on patches over a dark green hoodie, cuffed camo cargo pants, black and red high-top sneakers",
-      "identity": "young street performer, black patched beanie, mustard patch-covered bomber jacket, dark green hoodie, camo cargo pants, black and red high-tops",
+      "note": "Second view is off-model (no beanie, lighter skin); the other three agree, so the reference is the 3/4 view. Face still smooth rather than faceted (C7). The instrument sheet is faceted and kept.",
+      "look": "young street performer, medium brown skin, navy knit beanie, oversized mustard bomber jacket with sewn-on patches and black panels over a dark green hoodie, camo cargo pants, black red and orange high-top sneakers",
+      "identity": "young street performer, medium brown skin, navy beanie, mustard patch-covered bomber over a dark green hoodie, camo cargo pants, black red and orange high-tops",
       "instrument": "a stack of upturned plastic paint buckets in different sizes with a hubcap used as a cymbal and drumsticks wrapped in grip tape"
     },
     {
@@ -127,9 +129,12 @@
       "id": "02-metal",
       "name": "Metal",
       "genre": "Metal",
-      "have": [],
-      "note": "First turnaround was smooth, not faceted; moved to images/explore/ as outfit reference. Re-roll the turnaround in the hard-faceted style.",
-      "look": "very tall lanky teen drummer, light tan skin, very long straight black hair, black beanie, black square sunglasses, oversized black tee with a neon graffiti graphic, ripped teal skinny jeans, stacks of colorful wristbands and rings, black and red high-top sneakers",
+      "have": [
+        "turnaround",
+        "front"
+      ],
+      "note": "Consistent; clean flat planes but not clearly faceted (borderline on C7). No side view (front, 3/4, back).",
+      "look": "very tall lanky teen drummer, light tan skin, very long straight black hair, black beanie, black square sunglasses, thin gold chains, oversized black tee with a neon graffiti graphic, ripped teal skinny jeans, stacks of wristbands and a watch, black and red high-top sneakers",
       "identity": "very tall lanky teen, long straight black hair, black beanie, black square sunglasses, oversized black tee with neon graffiti graphic, ripped teal skinny jeans, colorful wristbands, black and red high-tops",
       "instrument": "two upturned black buckets rigged as a double-bass kit with drumsticks"
     },
@@ -137,20 +142,26 @@
       "id": "03-country",
       "name": "Country",
       "genre": "Country",
-      "have": [],
-      "note": "First turnaround was smooth, not faceted; moved to images/explore/ as outfit reference (teal undershirt is canonical). Re-roll the turnaround in the hard-faceted style.",
-      "look": "teen drummer, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel shirt over a teal t-shirt, thin silver chain, small gold earring, dark gray skinny jeans, mustard work boots",
-      "identity": "teen boy, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel over a teal t-shirt, dark gray skinny jeans, mustard work boots",
+      "have": [
+        "turnaround",
+        "front"
+      ],
+      "note": "Most faceted of the batch (angular hat and jaw), consistent across views. He has a beard, which reads adult; the brief is a middle-schooler. Re-roll with 'clean-shaven' if he should read as a kid.",
+      "look": "teen drummer, deep brown skin, tan cowboy hat, open red and navy buffalo plaid flannel over a teal t-shirt, gold chain with pendant, gold earrings and rings, black skinny jeans, mustard work boots",
+      "identity": "teen boy, deep brown skin, tan cowboy hat, open red and navy buffalo plaid flannel, teal tee, gold chain, black skinny jeans, mustard work boots",
       "instrument": "orange snare drum on a shoulder strap with drumsticks"
     },
     {
       "id": "04-jazz",
       "name": "Jazz",
       "genre": "Jazz",
-      "have": [],
-      "note": "First turnaround was smooth and inconsistent; moved to images/explore/ as outfit reference (purple beanie is canonical). Re-roll the turnaround in the hard-faceted style.",
-      "look": "small teen drummer, light tan skin, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal socks with red stripes, tan suede boots, stacked colorful wristbands, ear piercings",
-      "identity": "small teen girl, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal striped socks, tan suede boots",
+      "have": [
+        "turnaround",
+        "front"
+      ],
+      "note": "Consistent outfit; the side view adds a black cap brim under the beanie (ignore it). Face is smooth rather than faceted (C7).",
+      "look": "small teen drummer, light tan skin, purple knit beanie, long straight black hair with two thin braids, gold hoop earrings, white t-shirt, black suspenders, baggy black shorts, teal socks with red stripes, chunky tan work boots, stacks of colorful bangles on both wrists",
+      "identity": "small teen girl, purple knit beanie, long black hair with two thin braids, gold hoops, white tee, black suspenders, baggy black shorts, teal red-striped socks, tan work boots, colorful bangles",
       "instrument": "snare drum with a pair of wire brushes"
     },
     {
@@ -166,10 +177,14 @@
       "id": "06-kpop",
       "name": "K-pop",
       "genre": "K-pop",
-      "have": [],
-      "look": "teen drummer, light skin, messy sandy dreadlocks, white headband, bright 90s colorblock jacket in teal, pink and yellow over a lilac knit sweater, olive shorts, striped socks, red and teal high-top sneakers, small backpack",
-      "identity": "teen, messy sandy dreadlocks, white headband, teal pink and yellow colorblock jacket, lilac sweater, olive shorts, red and teal high-tops, small backpack",
-      "instrument": "drum practice pad with drumsticks"
+      "have": [
+        "turnaround",
+        "front"
+      ],
+      "look": "teen drummer, medium brown skin, long dark brown dreadlocks tied up on top with loose locks hanging down, white headband, teal and mustard colorblock zip jacket over a magenta and teal t-shirt, olive shorts, striped teal orange and purple tube socks, red-orange sneakers, navy backpack",
+      "identity": "teen, medium brown skin, dark brown dreadlocks tied up, white headband, teal and mustard colorblock jacket, magenta tee, olive shorts, striped tube socks, red-orange sneakers, navy backpack",
+      "instrument": "drum practice pad with drumsticks",
+      "note": "Turnaround consistent across views, good back view with the backpack. Faces still smooth rather than faceted (C7). Look updated from this image: medium brown skin, dark dreadlocks tied up, magenta tee."
     }
   ],
   "refNote": "Character references use char-<id>-front.jpg (a single-figure crop made by tools/crop-fronts.py); falls back to the turnaround."
