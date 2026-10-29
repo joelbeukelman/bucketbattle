@@ -5,9 +5,16 @@ Prompts that produce the concept art the studio pipeline needs (ARCHITECTURE §5
 rendition** (C4), an **expression sheet** for battle, and an **instrument sheet**.
 
 ## How to use
-1. **Style references.** Upload `images/ref-005-characters-battle-scale-drummers.jpg`
-   (hero style) and `images/ref-004-characters-map-scale.jpg` (map style) to
-   Midjourney and copy their image URLs into `<HERO_SREF>` / `<MAP_SREF>`. (Raw GitHub
+1. **Style references.** Upload the two character sheets to Midjourney:
+   - **Hero style = REF-005**: six kids standing in a row on a **gray** background holding
+     snares (cap + chain, long hair, cowboy hat, beret, tall marching hat, headband).
+     File: `docs/references/images/ref-005-characters-battle-scale-drummers.jpg`
+   - **Map style = REF-004**: 2×3 grid of chunky pixel-textured kids on a **teal**
+     background (bass players, a drum kit, sticks).
+     File: `docs/references/images/ref-004-characters-map-scale.jpg`
+
+   Paste
+   their image URLs into `<HERO_SREF>` / `<MAP_SREF>`. (Raw GitHub
    URLs only work if the repo is public.)
 2. **Keep one character consistent.** Once you like a character's first image,
    use it as the character/omni reference (`--cref` or `--oref`, depending on your
