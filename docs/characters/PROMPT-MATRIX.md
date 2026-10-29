@@ -29,7 +29,7 @@ Save results as `docs/references/images/char-<character>-<sheet>.jpg` (e.g. `cha
 
 ## 00-busker · Bucket Busker
 
-> Second view is off-model (no beanie, lighter skin); the other three agree, so the reference is the 3/4 view. Face still smooth rather than faceted (C7). The instrument sheet is faceted and kept.
+> Second view is off-model (no beanie, lighter skin); the other three agree, so the reference is the 3/4 view. Smooth concept is fine: facets are applied in 3D (C7). The instrument sheet is faceted and kept.
 
 <a id="00-busker-turnaround"></a>
 ### 1. Hero turnaround
@@ -177,7 +177,7 @@ chunky chibi 3D game character, short stubby body about 3 heads tall, oversized 
 
 ## 02-metal · Metal
 
-> Consistent; clean flat planes but not clearly faceted (borderline on C7). No side view (front, 3/4, back).
+> Consistent with clean flat planes. No side view (front, 3/4, back).
 
 <a id="02-metal-turnaround"></a>
 ### 1. Hero turnaround
@@ -251,7 +251,7 @@ chunky chibi 3D game character, short stubby body about 3 heads tall, oversized 
 
 ## 03-country · Country
 
-> Most faceted of the batch (angular hat and jaw), consistent across views. He has a beard, which reads adult; the brief is a middle-schooler. Re-roll with 'clean-shaven' if he should read as a kid.
+> Most faceted of the batch (angular hat and jaw), consistent across views. Beard, chain and earrings are kept by choice (2026-10-29).
 
 <a id="03-country-turnaround"></a>
 ### 1. Hero turnaround
@@ -325,7 +325,7 @@ chunky chibi 3D game character, short stubby body about 3 heads tall, oversized 
 
 ## 04-jazz · Jazz
 
-> Consistent outfit; the side view adds a black cap brim under the beanie (ignore it). Face is smooth rather than faceted (C7).
+> Consistent outfit; the side view adds a black cap brim under the beanie (ignore it). Smooth concept is fine: facets are applied in 3D (C7).
 
 <a id="04-jazz-turnaround"></a>
 ### 1. Hero turnaround
@@ -471,7 +471,7 @@ chunky chibi 3D game character, short stubby body about 3 heads tall, oversized 
 
 ## 06-kpop · K-pop
 
-> Turnaround consistent across views, good back view with the backpack. Faces still smooth rather than faceted (C7). Look updated from this image: medium brown skin, dark dreadlocks tied up, magenta tee.
+> Turnaround consistent across views, good back view with the backpack. Smooth concept is fine: facets are applied in 3D (C7). Look updated from this image: medium brown skin, dark dreadlocks tied up, magenta tee.
 
 <a id="06-kpop-turnaround"></a>
 ### 1. Hero turnaround

@@ -83,7 +83,9 @@ Format for each principle: **rule** — why — how to check it.
 - **C7 Hard-faceted poly for every character, never smooth.** Kids, adults and NPCs alike:
   sharp angular low-poly with visible flat facets. No smooth or Pixar-style shading, glossy plastic,
   or subsurface skin. The rap turnaround (`char-01-rap-*`) is the style anchor. (User decision
-  2026-10-29) — check: facets visible on face, clothes and shoes at full-size view.
+  2026-10-29) — check: facets visible on face, clothes and shoes on the **in-game 3D model**.
+  Concept art may be smoother: Midjourney won't reliably facet faces, so turnarounds are judged on
+  outfit, proportions and consistency, and the faceted look is applied in 3D (low tri count, flat shading).
 - **C6 Instruments read at every scale.** Instruments (drums, sticks, buckets) are
   slightly oversized compared with real life and use the character's accent color.
   (REF-004, REF-005)
@@ -97,6 +99,7 @@ Format for each principle: **rule** — why — how to check it.
   objectives off-screen are shown with an edge arrow in the accent yellow. (REF-002)
 
 ## Change log
+- 2026-10-29: C7 clarified: facets are enforced on the 3D model, not the concept art (user choice).
 - 2026-10-29: C7 added: hard-faceted poly for all characters (user: "poly not smooth").
 - 2026-10-29: initial provisional set.
 - 2026-10-29: REF-006–008 added. Revised W3 (lots), W6 (trim sheet), W8 (diorama map); added W10–W12.

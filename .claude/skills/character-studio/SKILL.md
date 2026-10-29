@@ -18,6 +18,9 @@ description: Conventions for the Bucket Battle Character & Model Studio — base
 - Studio viewport uses the **same lighting/material setup as the game** (import it
   from `packages/engine`) so what you see is what ships.
 - Budgets: hero ≤ 15k tris, 1024 px atlas; map ≤ 2k tris, 128 px pixel atlas (nearest); ≤ 60 bones.
+- **Faceted look is made here (C7).** Concept turnarounds are often smooth; the studio's mesh must
+  be hard-faceted anyway: flat shading (`flatShading: true` / split normals), hero ≤ 15k tris, no smoothing
+  groups. Image-to-3D results get decimated and flat-shaded before export. Compare against `char-01-rap-*`.
 - Canonical silhouettes for the starter six: `docs/characters/ROSTER.md` + REF-005.
 
 ## Import (from Blender or generation tools)

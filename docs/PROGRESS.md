@@ -8,12 +8,18 @@ Maintained by the `log-progress` skill.
 2. Studio spike: `apps/studio` with game lighting from a shared `packages/engine`, a reference-image overlay, faceted primitives; block out the busker (map rendition).
 3. `CityKitDef` for `kit.nyc` (ADR-0003): move palette + theme→massing rules out of `apps/game/src/palette.ts`; add stoops, awnings, and fire escapes as the first kit pieces.
 4. World detail pass: storefront awnings/signs on shop ground floors, more roof variety (W10), place the six school kids as locked markers near the school.
-5. User: hard-faceted turnarounds for Busker, Metal, Country, Jazz (re-roll), Marching, K-pop (new); Rap follow-ups; confirm how futuristic the city is (W9).
+5. User: Marching turnaround; A-pose / expressions / instrument / map for the six characters with front crops; confirm how futuristic the city is (W9).
 
 ## Open questions
 See `docs/ARCHITECTURE.md` §9.
 
 ---
+
+## 2026-10-29 — Session 2f: round-2 turnarounds
+- New turnarounds for Busker, Metal, Country, Jazz, K-pop (outfits consistent, faces still mostly smooth); front crops made for all; looks updated from the images.
+- Decision (user): **facets come from 3D**. Concept art is judged on outfit/proportions/consistency; the studio enforces flat shading + tri budget (C7 clarified, character-studio skill updated).
+- Decision (user): Country keeps the beard, chain and earrings.
+- Only Marching still needs a turnaround.
 
 ## 2026-10-29 — Session 2e: poly, not smooth
 - User decision: every character is hard-faceted poly (new principle C7). Busker images were smooth/Pixar-like.

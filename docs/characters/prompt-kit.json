@@ -106,7 +106,7 @@
         "front",
         "instrument"
       ],
-      "note": "Second view is off-model (no beanie, lighter skin); the other three agree, so the reference is the 3/4 view. Face still smooth rather than faceted (C7). The instrument sheet is faceted and kept.",
+      "note": "Second view is off-model (no beanie, lighter skin); the other three agree, so the reference is the 3/4 view. Smooth concept is fine: facets are applied in 3D (C7). The instrument sheet is faceted and kept.",
       "look": "young street performer, medium brown skin, navy knit beanie, oversized mustard bomber jacket with sewn-on patches and black panels over a dark green hoodie, camo cargo pants, black red and orange high-top sneakers",
       "identity": "young street performer, medium brown skin, navy beanie, mustard patch-covered bomber over a dark green hoodie, camo cargo pants, black red and orange high-tops",
       "instrument": "a stack of upturned plastic paint buckets in different sizes with a hubcap used as a cymbal and drumsticks wrapped in grip tape"
@@ -133,7 +133,7 @@
         "turnaround",
         "front"
       ],
-      "note": "Consistent; clean flat planes but not clearly faceted (borderline on C7). No side view (front, 3/4, back).",
+      "note": "Consistent with clean flat planes. No side view (front, 3/4, back).",
       "look": "very tall lanky teen drummer, light tan skin, very long straight black hair, black beanie, black square sunglasses, thin gold chains, oversized black tee with a neon graffiti graphic, ripped teal skinny jeans, stacks of wristbands and a watch, black and red high-top sneakers",
       "identity": "very tall lanky teen, long straight black hair, black beanie, black square sunglasses, oversized black tee with neon graffiti graphic, ripped teal skinny jeans, colorful wristbands, black and red high-tops",
       "instrument": "two upturned black buckets rigged as a double-bass kit with drumsticks"
@@ -146,7 +146,7 @@
         "turnaround",
         "front"
       ],
-      "note": "Most faceted of the batch (angular hat and jaw), consistent across views. He has a beard, which reads adult; the brief is a middle-schooler. Re-roll with 'clean-shaven' if he should read as a kid.",
+      "note": "Most faceted of the batch (angular hat and jaw), consistent across views. Beard, chain and earrings are kept by choice (2026-10-29).",
       "look": "teen drummer, deep brown skin, tan cowboy hat, open red and navy buffalo plaid flannel over a teal t-shirt, gold chain with pendant, gold earrings and rings, black skinny jeans, mustard work boots",
       "identity": "teen boy, deep brown skin, tan cowboy hat, open red and navy buffalo plaid flannel, teal tee, gold chain, black skinny jeans, mustard work boots",
       "instrument": "orange snare drum on a shoulder strap with drumsticks"
@@ -159,7 +159,7 @@
         "turnaround",
         "front"
       ],
-      "note": "Consistent outfit; the side view adds a black cap brim under the beanie (ignore it). Face is smooth rather than faceted (C7).",
+      "note": "Consistent outfit; the side view adds a black cap brim under the beanie (ignore it). Smooth concept is fine: facets are applied in 3D (C7).",
       "look": "small teen drummer, light tan skin, purple knit beanie, long straight black hair with two thin braids, gold hoop earrings, white t-shirt, black suspenders, baggy black shorts, teal socks with red stripes, chunky tan work boots, stacks of colorful bangles on both wrists",
       "identity": "small teen girl, purple knit beanie, long black hair with two thin braids, gold hoops, white tee, black suspenders, baggy black shorts, teal red-striped socks, tan work boots, colorful bangles",
       "instrument": "snare drum with a pair of wire brushes"
@@ -171,7 +171,8 @@
       "have": [],
       "look": "teen marching-band drummer, medium brown skin, very tall dark-green shako hat with red and gold bands, dark-green military band jacket with gold frogging, white diagonal sash, black trousers with a red side stripe, black shoes",
       "identity": "teen boy, medium brown skin, very tall dark-green shako hat, dark-green band jacket with gold frogging, white diagonal sash, black trousers with red stripe",
-      "instrument": "large orange marching snare on a carrier harness with gold-tipped drumsticks"
+      "instrument": "large orange marching snare on a carrier harness with gold-tipped drumsticks",
+      "note": ""
     },
     {
       "id": "06-kpop",
@@ -184,7 +185,7 @@
       "look": "teen drummer, medium brown skin, long dark brown dreadlocks tied up on top with loose locks hanging down, white headband, teal and mustard colorblock zip jacket over a magenta and teal t-shirt, olive shorts, striped teal orange and purple tube socks, red-orange sneakers, navy backpack",
       "identity": "teen, medium brown skin, dark brown dreadlocks tied up, white headband, teal and mustard colorblock jacket, magenta tee, olive shorts, striped tube socks, red-orange sneakers, navy backpack",
       "instrument": "drum practice pad with drumsticks",
-      "note": "Turnaround consistent across views, good back view with the backpack. Faces still smooth rather than faceted (C7). Look updated from this image: medium brown skin, dark dreadlocks tied up, magenta tee."
+      "note": "Turnaround consistent across views, good back view with the backpack. Smooth concept is fine: facets are applied in 3D (C7). Look updated from this image: medium brown skin, dark dreadlocks tied up, magenta tee."
     }
   ],
   "refNote": "Character references use char-<id>-front.jpg (a single-figure crop made by tools/crop-fronts.py); falls back to the turnaround."
