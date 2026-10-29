@@ -1,5 +1,8 @@
 # Starter Roster — six middle-school drummers
 
+**Level 1 opener:** the corner bucket performer between home and school (see
+`docs/NARRATIVE.md`). Design TBD; needs its own reference.
+
 Design brief for the first six musicians. Silhouettes come from REF-005 (hero)
 and are simplified per REF-004 (map). Names are placeholders. Once
 `packages/schema` exists, each becomes a `CharacterDef` + `MusicianDef` in
@@ -15,10 +18,12 @@ and are simplified per REF-004 (map). Names are placeholders. Once
 | 6 | **K-pop** | white headband, messy curls, 90s colorblock jacket, backpack, hi-tops | teal / pink / yellow | sticks + practice pad, choreographed stick tricks | tight, quantized pop patterns with call-and-response breaks |
 
 ## Open
-- "Bucket Battle": do all six play **buckets** dressed up per genre (e.g. the
-  marching kid's bucket on a harness, the metal kid's two buckets), or real drums
-  that get upgraded? Affects instrument parts.
+- ~~Buckets vs. drums~~: answered. Level 1 is a **bucket street performer** on a
+  corner (separate from the six kids; age and look TBD). Each later level brings a new drum
+  type and setting, so the six kids' drums above stand, and each kid becomes a
+  level with its own instrument and stage.
+- Map each kid to a level order + stage (court, subway, rooftop, school band room…).
 - The player character: one more kid built in the character builder, who
-  starts at the middle school.
+  starts at home and walks past the bucket corner toward school.
 - More views per character (front, side, back, 3/4, T-pose) would help both
   modeling and AI image-to-3D. See ARCHITECTURE §5.4.

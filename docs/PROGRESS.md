@@ -5,15 +5,21 @@ Maintained by the `log-progress` skill.
 
 ## Next up
 1. Phase 0: scaffold pnpm workspace (`apps/game`, `apps/studio`, `packages/schema|engine|world|characters|ui`), Vite + R3F, lint/test.
-2. Phase 1 spike: gray-box themed block islands from a `WorldDef` JSON, school spawn, iso follow camera (W5), tap-to-move, 2D minimap.
+2. Phase 1 spike: gray-box themed block islands from a `WorldDef` JSON (`kit.nyc`), home spawn → corner bucket stage → school, iso follow camera (W5), tap-to-move, 2D minimap.
 3. Studio spike: viewport in game lighting + reference-image overlay + procedural faceted primitives; block out the marching kid (hero) from REF-005.
 4. Get turnarounds (front/side/back/3-4) for the six drummers from the user.
-5. Decide bucket vs. drum instruments (ROSTER.md).
+5. Get a reference for the level-1 corner bucket performer; confirm how futuristic the city is (W9).
 
 ## Open questions
 See `docs/ARCHITECTURE.md` §9.
 
 ---
+
+## 2026-10-29 — Session 1c: narrative & cities
+- New `docs/NARRATIVE.md`: near-future world where AI has commodified art; a kid discovers they can make and perform music.
+- Level 1 = bucket street performer on a corner between home and school; each level brings a new drum + setting.
+- ADR-0003 (proposed): shared city layout rules + per-city kits; first `kit.nyc` (fictional), later Tokyo/Dubai/London/Bangkok.
+- Spawn moved to **home**; school becomes the first landmark. W9 handmade-vs-machine principle added (provisional).
 
 ## 2026-10-29 — Session 1b: first references
 - Added REF-001–005 (3 world screens, 2 character sheets) with take/avoid notes.

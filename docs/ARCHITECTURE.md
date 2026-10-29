@@ -68,7 +68,7 @@ bucketbattle/
 The city is a **grid of blocks**, each block a grid of **tiles** (e.g. 4 m cells).
 
 ```ts
-WorldDef   { id, name, blockSize: [w,d] (tiles), blocks: BlockDef[][], spawn, encounters: EncounterDef[] }
+WorldDef   { id, name, cityKit: 'kit.nyc', blockSize: [w,d] (tiles), blocks: BlockDef[][], spawn, encounters: EncounterDef[] }
 BlockDef   { type: 'buildings'|'park'|'plaza'|'lot', seed, tiles?: TileRef[][], landmark? }
 TileRef    { tileId: 'tile.road.straight', rot: 0|90|180|270, variant? }
 EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
@@ -82,10 +82,14 @@ EncounterDef { id, musicianId, position:[x,z], facing, radius, levelRequired }
   navigation and as musician "stages".
 - Blocks are **raised themed islands** with curbs (W3, REF-002): `school`, `park`,
   `court`, `skate`, `shops`, `houses`, `apartments`, `gas`, `lot`, `cemetery`…
-- **Spawn = the player's middle school** block. Musicians stand at street corners,
+- **Spawn = the player's home**; the **middle school** is the first landmark
+  (level 1: the bucket performer on a corner between them, see `docs/NARRATIVE.md`).
+  Musicians stand at street corners,
   courts, plazas and stoops (`EncounterDef.position` snaps to sidewalk tiles).
 - **Set pieces** span blocks and give the city a shape: river + drawbridge,
   elevated train line, highway overpass. Stored as `SetPieceDef` with a footprint.
+- **Cities**: same layout rules everywhere, with a per-city kit for tiles, palette and
+  ambience (ADR-0003). First kit: `kit.nyc` (fictional NYC). Later: Tokyo, Dubai, London, Bangkok.
 
 ### 4.2 Rendering
 - **Modular kit**: road, sidewalk, curb corner, crosswalk, facade segments
@@ -227,7 +231,8 @@ reference-image overlay, and one-click export to our data formats.
 ## 9. Open questions (answer with references)
 - ~~Art style~~: flat-shaded low-poly world; two-rendition characters (REF-001–005).
 - ~~Camera~~: fixed isometric-style follow camera with zoom (W5).
-- City setting: one real-inspired neighborhood (NYC? Philly?) or a fictional mash-up?
+- ~~City setting~~: fictional, based on NYC first; more cities later (ADR-0003).
 - Weather/time: rain/dusk signature mood (W4). Rotate weather/time, or fix it per district?
-- Instruments: everyone plays buckets styled by genre, or real drums? (see `docs/characters/ROSTER.md`)
+- ~~Instruments~~: level 1 is buckets; each level brings a new drum type and setting (NARRATIVE.md).
+- How futuristic is the city? (W9 is provisional)
 - Online features ever (leaderboards, shared characters)? Affects whether we add a backend.

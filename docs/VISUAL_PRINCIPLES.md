@@ -36,6 +36,14 @@ Format for each principle: **rule** — why — how to check it.
   at the world's boundary. They hide where the world ends and areas still
   loading, and on the full map they mark undiscovered areas. (REF-002)
 
+- **W9 Handmade vs. machine-made [provisional].** The near-future city (NARRATIVE.md)
+  is recognizable but has a layer of AI content: uniform glossy screens and
+  ads playing "generated" music, delivery drones, identical chain storefronts. These
+  stay **cool, uniform and clean**. Human music and its spaces (stages, street
+  art, buskers, the player's performances) are **warm, saturated, imperfect,
+  hand-painted**. This reinforces W2. — check: in a screenshot you can tell which
+  elements are "human" and which are "AI".
+
 ## Characters
 - **C1 Silhouette first.** Each musician is identifiable by silhouette alone:
   headwear + hair + instrument + footwear. (REF-004, REF-005) — check: black-fill render.
@@ -66,4 +74,5 @@ Format for each principle: **rule** — why — how to check it.
 
 ## Change log
 - 2026-10-29: initial provisional set.
+- 2026-10-29: W9 added (provisional) from the narrative premise.
 - 2026-10-29: REF-001–005 added. Confirmed W1–W4, C1–C3, U2; added W5–W8, C4–C6, U4.

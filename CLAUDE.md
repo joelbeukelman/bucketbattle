@@ -6,7 +6,8 @@
 A 3D game where the player walks a city block grid, finds street musicians
 (bucket drummers, sax players, beatboxers…), and battles them in back-and-forth
 **call-and-response matching** rounds that get longer, faster and more complex as
-the player levels up.
+the player levels up. Premise: in a near future where AI has commodified music,
+a kid discovers they can make and perform it themselves (`docs/NARRATIVE.md`).
 
 **Current phase: 0–2 — foundations.** World + map view, and the Character & Model
 Studio (a stopgap between Blender and asset generation). Battle mechanics are
@@ -19,6 +20,7 @@ Studio (a stopgap between Blender and asset generation). Battle mechanics are
 | Look & feel rules (the "visual constitution") | `docs/VISUAL_PRINCIPLES.md` |
 | Reference links/screenshots + what we took from each | `docs/references/README.md` |
 | Why we chose X over Y | `docs/decisions/ADR-*.md` |
+| Story premise, level structure | `docs/NARRATIVE.md` |
 | Character roster & design briefs | `docs/characters/ROSTER.md` |
 | What happened, session by session; what's next | `docs/PROGRESS.md` |
 | Repeatable workflows | `.claude/skills/*/SKILL.md` |
