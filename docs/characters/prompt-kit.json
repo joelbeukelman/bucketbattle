@@ -118,9 +118,10 @@
       "have": [
         "turnaround",
         "map",
-        "front"
+        "front",
+        "apose-front"
       ],
-      "note": "The style anchor: its front crop is the faceted --sref for every hero prompt. The map version kept lanky proportions; re-run it with the chibi-first prompt.",
+      "note": "The style anchor: its front crop is the faceted --sref for every hero prompt. The map version kept lanky proportions; re-run it with the chibi-first prompt. A-pose front ⚠️ nicely faceted, but turned three-quarter instead of facing front, and the near eye renders solid black; re-roll for a straight-on front.",
       "look": "teen drummer, medium brown skin, short twists, backward black snapback, thick gold cuban chain, oversized slate-blue hoodie with orange and navy patterned cuffs, black shorts, white tube socks with red stripes, chunky gray and yellow platform sneakers",
       "identity": "teen boy, medium brown skin, short twists, backward black snapback, thick gold chain, slate-blue hoodie with orange patterned cuffs, black shorts, red-striped white tube socks, chunky gray and yellow sneakers",
       "instrument": "small red snare drum with drumsticks"
@@ -131,9 +132,10 @@
       "genre": "Metal",
       "have": [
         "turnaround",
-        "front"
+        "front",
+        "apose-front"
       ],
-      "note": "Consistent with clean flat planes. No side view (front, 3/4, back).",
+      "note": "Consistent with clean flat planes. No side view (front, 3/4, back). A-pose front ⚠️ on-model, but arms hang low (about 20°) and one hand points; re-roll if the rigger needs a cleaner pose.",
       "look": "very tall lanky teen drummer, light tan skin, very long straight black hair, black beanie, black square sunglasses, thin gold chains, oversized black tee with a neon graffiti graphic, ripped teal skinny jeans, stacks of wristbands and a watch, black and red high-top sneakers",
       "identity": "very tall lanky teen, long straight black hair, black beanie, black square sunglasses, oversized black tee with neon graffiti graphic, ripped teal skinny jeans, colorful wristbands, black and red high-tops",
       "instrument": "two upturned black buckets rigged as a double-bass kit with drumsticks"
@@ -144,9 +146,10 @@
       "genre": "Country",
       "have": [
         "turnaround",
-        "front"
+        "front",
+        "apose-front"
       ],
-      "note": "Most faceted of the batch (angular hat and jaw), consistent across views. Beard, chain and earrings are kept by choice (2026-10-29).",
+      "note": "Most faceted of the batch (angular hat and jaw), consistent across views. Beard, chain and earrings are kept by choice (2026-10-29). A-pose front ✅ on-model; arms are a bit low (about 30°) but usable for rigging.",
       "look": "teen drummer, deep brown skin, tan cowboy hat, open red and navy buffalo plaid flannel over a teal t-shirt, gold chain with pendant, gold earrings and rings, black skinny jeans, mustard work boots",
       "identity": "teen boy, deep brown skin, tan cowboy hat, open red and navy buffalo plaid flannel, teal tee, gold chain, black skinny jeans, mustard work boots",
       "instrument": "orange snare drum on a shoulder strap with drumsticks"
@@ -157,9 +160,10 @@
       "genre": "Jazz",
       "have": [
         "turnaround",
-        "front"
+        "front",
+        "apose-front"
       ],
-      "note": "Consistent outfit; the side view adds a black cap brim under the beanie (ignore it). Smooth concept is fine: facets are applied in 3D (C7).",
+      "note": "Consistent outfit; the side view adds a black cap brim under the beanie (ignore it). Smooth concept is fine: facets are applied in 3D (C7). A-pose front ✅ clean and on-model.",
       "look": "small teen drummer, light tan skin, purple knit beanie, long straight black hair with two thin braids, gold hoop earrings, white t-shirt, black suspenders, baggy black shorts, teal socks with red stripes, chunky tan work boots, stacks of colorful bangles on both wrists",
       "identity": "small teen girl, purple knit beanie, long black hair with two thin braids, gold hoops, white tee, black suspenders, baggy black shorts, teal red-striped socks, tan work boots, colorful bangles",
       "instrument": "snare drum with a pair of wire brushes"
@@ -180,12 +184,13 @@
       "genre": "K-pop",
       "have": [
         "turnaround",
-        "front"
+        "front",
+        "apose-front"
       ],
       "look": "teen drummer, medium brown skin, long dark brown dreadlocks tied up on top with loose locks hanging down, white headband, teal and mustard colorblock zip jacket over a magenta and teal t-shirt, olive shorts, striped teal orange and purple tube socks, red-orange sneakers, navy backpack",
       "identity": "teen, medium brown skin, dark brown dreadlocks tied up, white headband, teal and mustard colorblock jacket, magenta tee, olive shorts, striped tube socks, red-orange sneakers, navy backpack",
       "instrument": "drum practice pad with drumsticks",
-      "note": "Turnaround consistent across views, good back view with the backpack. Smooth concept is fine: facets are applied in 3D (C7). Look updated from this image: medium brown skin, dark dreadlocks tied up, magenta tee."
+      "note": "Turnaround consistent across views, good back view with the backpack. Smooth concept is fine: facets are applied in 3D (C7). Look updated from this image: medium brown skin, dark dreadlocks tied up, magenta tee. A-pose front ✅ clean and on-model (the tee shifted from magenta toward coral; fine)."
     }
   ],
   "refNote": "Character references use char-<id>-front.jpg (a single-figure crop made by tools/crop-fronts.py); falls back to the turnaround."
