@@ -1,62 +1,54 @@
 {
+  "imageBase": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/",
   "styleRefs": {
     "hero": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/ref-005-characters-battle-scale-drummers.jpg",
-    "map": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/ref-004-characters-map-scale.jpg"
+    "map": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/ref-004-characters-map-scale.jpg",
+    "faceted": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/char-01-rap-turnaround.jpg"
   },
   "styles": {
-    "hero": "low-poly faceted 3D game character, visible flat-shaded polygon planes, lanky stylized proportions about 6.5 heads tall, thin limbs, large ears, big dark heavy-lidded eyes, deadpan expression, oversized shoes and headwear, clothing patterns painted as flat textures, soft even studio lighting, plain neutral gray background",
-    "map": "chunky blocky low-poly 3D game character with crisp pixel-art textures, about 4 heads tall, oversized sneakers, simple readable silhouette, saturated outfit colors, plain muted teal background",
-    "prop": "low-poly faceted 3D game prop, visible flat-shaded polygon planes, painted flat textures, soft even studio lighting, plain neutral gray background"
+    "hero": "low-poly faceted 3D game character, hard flat-shaded polygon facets, lanky stylized proportions about 6.5 heads tall, thin limbs, large ears, big dark heavy-lidded eyes, deadpan expression, oversized shoes, plain neutral gray studio background, soft even lighting",
+    "map": "chunky chibi 3D game character, short stubby body about 3 heads tall, oversized head, hands and sneakers, blocky voxel-like low-poly with crisp pixel-art textures, plain muted teal background",
+    "prop": "low-poly faceted 3D game prop, hard flat-shaded polygon facets, painted flat textures, plain neutral gray studio background, soft even lighting"
   },
   "sheets": [
     {
       "id": "turnaround",
       "label": "Hero turnaround",
-      "why": "Front, 3/4, side and back views. Used for modeling and AI image-to-3D. Run this first, then pick the best result: its image URL becomes this character's reference for the other sheets.",
-      "style": "hero",
-      "instrument": false,
-      "text": "character turnaround sheet, same character shown four times: front view, three-quarter view, side profile, back view, full body, neutral standing pose, empty hands relaxed at sides, evenly spaced, orthographic",
-      "params": "--ar 16:9 --style raw --sref {HERO_SREF} --no text, labels, instrument, perspective distortion, cropped feet",
+      "why": "Front, 3/4, side and back of the same outfit. Used for modeling and image-to-3D. Once one is in the repo, it becomes this character's reference for the other sheets.",
+      "template": "3D character design reference sheet, the same character shown four times left to right: front view, three-quarter view, side profile, back view, identical outfit and hat in every view, full body standing straight, empty hands relaxed at sides, {LOOK}, {STYLE:hero}",
+      "params": "--ar 16:9 --style raw --sref {HERO_SREF} {FACETED_SREF} --no text, labels, instrument, props, cropped feet",
       "charRef": null
     },
     {
       "id": "apose",
       "label": "A-pose",
-      "why": "Arms out at 45°, front and side. Used for rigging.",
-      "style": "hero",
-      "instrument": false,
-      "text": "full body A-pose, arms angled 45 degrees down and away from the body, legs slightly apart, front view and side view side by side, orthographic, for 3D rigging",
-      "params": "--ar 3:2 --style raw --sref {HERO_SREF} {CHAR_REF:strong} --no text, instrument, props",
+      "why": "Front and side in a rigging pose. Uses the turnaround as a strong reference so it's the same kid.",
+      "template": "3D character rigging sheet, front view and side view side by side, full body A-pose, arms straight and angled 45 degrees down and away from the body, palms facing down, legs shoulder-width apart, same character and outfit as the reference image, {IDENTITY}, {STYLE:hero}",
+      "params": "--ar 3:2 --style raw --sref {HERO_SREF} {FACETED_SREF} {CHAR_REF:strong} --no text, instrument, props, extra limbs",
       "charRef": "strong"
     },
     {
       "id": "expressions",
       "label": "Expressions",
-      "why": "Six faces for battle reactions.",
-      "style": "hero",
-      "instrument": false,
-      "text": "expression sheet, head and shoulders, six panels: neutral deadpan, focused concentration, smug grin, surprised, triumphant cheer, defeated slump",
-      "params": "--ar 3:2 --style raw --sref {HERO_SREF} {CHAR_REF:strong} --no text",
+      "why": "Six close-ups for battle reactions, as a 3×2 grid.",
+      "template": "character expression sheet, six head-and-shoulders portraits of the same character in a 3 by 2 grid, expressions: neutral deadpan, focused concentration, smug grin, wide-eyed surprise, triumphant shout, defeated slump, same face, hat and hair in every panel, {IDENTITY}, {STYLE:hero}",
+      "params": "--ar 3:2 --style raw --sref {HERO_SREF} {FACETED_SREF} {CHAR_REF:strong} --no text, labels, full body",
       "charRef": "strong"
     },
     {
       "id": "instrument",
       "label": "Instrument",
-      "why": "The drum on its own, front/side/top. Modeled as a separate part.",
-      "style": "prop",
-      "instrument": true,
-      "text": "prop sheet of the instrument only, front view, side view and top view",
-      "params": "--ar 16:9 --style raw --sref {HERO_SREF} --no hands, people, text",
+      "why": "The drum alone in three views, modeled as a separate part. No character reference, so no person sneaks in.",
+      "template": "game prop turnaround sheet of a single object: {INSTRUMENT}, shown three times: front view, side view, top-down view, isolated object, no people, {STYLE:prop}",
+      "params": "--ar 16:9 --style raw --sref {FACETED_SREF} --no hands, people, character, text",
       "charRef": null
     },
     {
       "id": "map",
       "label": "Map version",
-      "why": "Chunky pixel-textured version for the city map. A light character reference keeps the outfit without copying the lanky proportions.",
-      "style": "map",
-      "instrument": true,
-      "text": "turnaround sheet, front view, three-quarter view and back view, full body, playing their instrument",
-      "params": "--ar 16:9 --style raw --sref {MAP_SREF} {CHAR_REF:light} --no text",
+      "why": "Small, chunky version for the city map. Leads with the chibi proportions and uses only a light reference, so it keeps the outfit without copying the lanky body.",
+      "template": "{STYLE:map}, turnaround sheet with front view, three-quarter view and back view, full body, holding {INSTRUMENT}, outfit: {IDENTITY}",
+      "params": "--ar 16:9 --style raw --sref {MAP_SREF} {CHAR_REF:light} --no text, tall, lanky, thin limbs",
       "charRef": "light"
     }
   ],
@@ -65,51 +57,69 @@
       "id": "00-busker",
       "name": "Bucket Busker",
       "genre": "Level 1 opener",
-      "placeholder": true,
-      "look": "young street performer, beanie with a handmade patch, oversized thrifted work jacket covered in hand-painted doodles, cargo pants, taped-up sneakers",
-      "instrument": "a stack of upturned plastic paint buckets in different sizes, a hubcap used as a cymbal, drumsticks wrapped in grip tape"
+      "have": ["turnaround"],
+      "note": "Turnaround is inconsistent: the second view has a different patch-covered jacket and a pom-pom beanie, and there's no back view. Usable as a reference, but re-roll the turnaround before modeling.",
+      "look": "young street performer, light skin, black knit beanie with neon patches, oversized mustard bomber jacket covered in small sewn-on patches over a dark green hoodie, cuffed camo cargo pants, black and red high-top sneakers",
+      "identity": "young street performer, black patched beanie, mustard patch-covered bomber jacket, dark green hoodie, camo cargo pants, black and red high-tops",
+      "instrument": "a stack of upturned plastic paint buckets in different sizes with a hubcap used as a cymbal and drumsticks wrapped in grip tape"
     },
     {
       "id": "01-rap",
       "name": "Rap",
       "genre": "Rap",
-      "look": "teen drummer, medium brown skin, short twists, backward dark-navy snapback, thick gold chain, oversized slate-blue hoodie with orange arm stripes, black shorts, tall white socks with red stripes, chunky gray and yellow sneakers",
-      "instrument": "small red snare drum and drumsticks"
+      "have": ["turnaround", "map"],
+      "note": "Turnaround is the best match for the hero style so far, and is used as an extra style reference for everyone. The map version kept lanky proportions; re-run it with the new chibi-first prompt.",
+      "look": "teen drummer, medium brown skin, short twists, backward black snapback, thick gold cuban chain, oversized slate-blue hoodie with orange and navy patterned cuffs, black shorts, white tube socks with red stripes, chunky gray and yellow platform sneakers",
+      "identity": "teen boy, medium brown skin, short twists, backward black snapback, thick gold chain, slate-blue hoodie with orange patterned cuffs, black shorts, red-striped white tube socks, chunky gray and yellow sneakers",
+      "instrument": "small red snare drum with drumsticks"
     },
     {
       "id": "02-metal",
       "name": "Metal",
       "genre": "Metal",
-      "look": "tall lanky teen drummer, very long straight black hair covering the ears, black oversized tee with a bright multicolor graphic, ripped light-blue jeans, black sneakers, black watch",
-      "instrument": "two upturned black buckets rigged as a double-bass kit, drumsticks"
+      "have": ["turnaround"],
+      "note": "Strong silhouette (beanie, sunglasses, long hair). Rendered smoother than the faceted target and has two side views instead of a back view. Good enough as a reference; optional re-roll.",
+      "look": "very tall lanky teen drummer, light tan skin, very long straight black hair, black beanie, black square sunglasses, oversized black tee with a neon graffiti graphic, ripped teal skinny jeans, stacks of colorful wristbands and rings, black and red high-top sneakers",
+      "identity": "very tall lanky teen, long straight black hair, black beanie, black square sunglasses, oversized black tee with neon graffiti graphic, ripped teal skinny jeans, colorful wristbands, black and red high-tops",
+      "instrument": "two upturned black buckets rigged as a double-bass kit with drumsticks"
     },
     {
       "id": "03-country",
       "name": "Country",
       "genre": "Country",
-      "look": "teen drummer, deep brown skin, tan cowboy hat, red and navy plaid button-up shirt over a mint undershirt, rolled light jeans, mustard work boots",
-      "instrument": "orange snare drum on a shoulder strap, drumsticks"
+      "have": ["turnaround"],
+      "note": "Good: has front, back and side. The undershirt changes from orange to teal between views; teal is used as canonical.",
+      "look": "teen drummer, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel shirt over a teal t-shirt, thin silver chain, small gold earring, dark gray skinny jeans, mustard work boots",
+      "identity": "teen boy, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel over a teal t-shirt, dark gray skinny jeans, mustard work boots",
+      "instrument": "orange snare drum on a shoulder strap with drumsticks"
     },
     {
       "id": "04-jazz",
       "name": "Jazz",
       "genre": "Jazz",
-      "look": "small teen drummer, light tan skin, black hair in two braided pigtails, purple beret, white short-sleeve collared shirt, black high-waisted shorts with suspenders, striped knee socks, brown shoes, purple wristband",
+      "have": ["turnaround"],
+      "note": "Headwear changes between views (purple beanie twice, a patterned headband once) and there's no side view. Purple beanie is used as canonical. Re-roll the turnaround before modeling.",
+      "look": "small teen drummer, light tan skin, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal socks with red stripes, tan suede boots, stacked colorful wristbands, ear piercings",
+      "identity": "small teen girl, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal striped socks, tan suede boots",
       "instrument": "snare drum with a pair of wire brushes"
     },
     {
       "id": "05-marching",
       "name": "Marching",
       "genre": "Marching band",
+      "have": [],
       "look": "teen marching-band drummer, medium brown skin, very tall dark-green shako hat with red and gold bands, dark-green military band jacket with gold frogging, white diagonal sash, black trousers with a red side stripe, black shoes",
-      "instrument": "large orange marching snare on a carrier harness, gold-tipped drumsticks"
+      "identity": "teen boy, medium brown skin, very tall dark-green shako hat, dark-green band jacket with gold frogging, white diagonal sash, black trousers with red stripe",
+      "instrument": "large orange marching snare on a carrier harness with gold-tipped drumsticks"
     },
     {
       "id": "06-kpop",
       "name": "K-pop",
       "genre": "K-pop",
+      "have": [],
       "look": "teen drummer, light skin, messy sandy dreadlocks, white headband, bright 90s colorblock jacket in teal, pink and yellow over a lilac knit sweater, olive shorts, striped socks, red and teal high-top sneakers, small backpack",
-      "instrument": "drum practice pad and drumsticks mid-twirl"
+      "identity": "teen, messy sandy dreadlocks, white headband, teal pink and yellow colorblock jacket, lilac sweater, olive shorts, red and teal high-tops, small backpack",
+      "instrument": "drum practice pad with drumsticks"
     }
   ]
 }

@@ -156,3 +156,21 @@ Each entry is added with the `add-reference` skill. Keep the format:
   a low-rise core so sightlines stay open; this look is close to our target fidelity.
 - Avoid: palm trees and red dirt in `kit.nyc`. Save them for other city kits (Dubai/LA-like).
 - Principles touched: W11, W12
+
+---
+
+## Character sheets (generated from `docs/characters/PROMPT-MATRIX.md`)
+Canonical designs once accepted. Review notes live in `docs/characters/prompt-kit.json` (`note`)
+and show on the run sheet. The descriptions in prompt-kit.json were rewritten to match these images.
+
+| File | Character | Review |
+|---|---|---|
+| `images/char-01-rap-turnaround.jpg` | Rap | ✅ Best match to C5 (hard facets, ears, eyes, chunky shoes). Used as an extra style reference for everyone. |
+| `images/char-01-rap-map.jpg` | Rap (map) | ⚠️ Pixel textures fit C4, but proportions are still lanky; kit props drawn separately. Re-run with the chibi-first prompt. |
+| `images/char-00-busker-turnaround.jpg` | Bucket Busker | ⚠️ Inconsistent between views (jacket, beanie), no back view, smoother than C5. Re-roll. |
+| `images/char-02-metal-turnaround.jpg` | Metal | ✅ Strong silhouette (C1). Smoother than C5, two side views instead of a back. |
+| `images/char-03-country-turnaround.jpg` | Country | ✅ Front, back, side. Undershirt switches orange/teal; teal is canonical. |
+| `images/char-04-jazz-turnaround.jpg` | Jazz | ⚠️ Headwear changes (beanie vs headband), no side view. Purple beanie is canonical. Re-roll. |
+
+Learned: Midjourney drifts toward smooth "Pixar" shading unless a faceted image is in `--sref`. Adding the rap
+turnaround as a second style reference is the fix.

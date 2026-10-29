@@ -8,12 +8,20 @@ Maintained by the `log-progress` skill.
 2. Studio spike: `apps/studio` with game lighting from a shared `packages/engine`, a reference-image overlay, faceted primitives; block out the busker (map rendition).
 3. `CityKitDef` for `kit.nyc` (ADR-0003): move palette + theme→massing rules out of `apps/game/src/palette.ts`; add stoops, awnings, and fire escapes as the first kit pieces.
 4. World detail pass: storefront awnings/signs on shop ground floors, more roof variety (W10), place the six school kids as locked markers near the school.
-5. User: turnarounds via `docs/characters/PROMPTS.md`; a reference for the busker; confirm how futuristic the city is (W9).
+5. User: turnarounds for Marching + K-pop, re-rolls for Busker + Jazz, then A-pose/expressions/instrument/map via the run sheet; confirm how futuristic the city is (W9).
 
 ## Open questions
 See `docs/ARCHITECTURE.md` §9.
 
 ---
+
+## 2026-10-29 — Session 2c: first character images
+- Added 5 turnarounds (busker, rap, metal, country, jazz) + rap map version as `docs/references/images/char-*.jpg`; reviewed in references README.
+- prompt-kit.json: `look`/`identity` rewritten to match the accepted images; `have` lists what's in the repo; `note` holds review notes.
+- Prompts reworked: sheet instruction first, short `identity` for follow-ups, rap turnaround as a second `--sref` to keep the faceted look,
+  repo turnaround URLs filled in automatically as `--oref`, map sheet leads with chibi proportions + `--ow 25` + `--no tall, lanky`.
+- V8 mode now uses an image prompt (turnaround URL first, `--iw`) instead of manual attaching.
+- Learned: Midjourney drifts to smooth shading without a faceted image in `--sref`; turnarounds often swap outfit pieces between views, so always check consistency before accepting.
 
 ## 2026-10-29 — Session 2b: prompt matrix
 - `docs/characters/prompt-kit.json` (styles, 5 sheets, 7 characters) → `pnpm prompts` (tools/build-prompts.ts) generates
