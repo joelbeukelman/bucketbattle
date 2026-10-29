@@ -1,5 +1,11 @@
 # Midjourney Prompt Kit — characters
 
+> **Use the generated matrix to run prompts:** `PROMPT-MATRIX.md` (all 35, ready to paste) or the
+> interactive run sheet https://claude.ai/artifact/NPFQpoyCgdRGz1MpB1pot7 (copy buttons, checklist,
+> paste-in character reference). **Source of truth:** `prompt-kit.json`. Edit it, then run `pnpm prompts`.
+> The blocks below explain the structure. Since 2026-10-29 the turnaround, A-pose and expression sheets
+> leave the instrument out (it hides the body for modeling); the instrument gets its own prop sheet.
+
 Prompts that produce the concept art the studio pipeline needs (ARCHITECTURE §5.4):
 **turnarounds** for modeling and image-to-3D, an **A-pose** for rigging, a **map
 rendition** (C4), an **expression sheet** for battle, and an **instrument sheet**.

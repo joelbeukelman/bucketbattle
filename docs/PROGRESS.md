@@ -15,6 +15,13 @@ See `docs/ARCHITECTURE.md` §9.
 
 ---
 
+## 2026-10-29 — Session 2b: prompt matrix
+- `docs/characters/prompt-kit.json` (styles, 5 sheets, 7 characters) → `pnpm prompts` (tools/build-prompts.ts) generates
+  `PROMPT-MATRIX.md` (35 prompts, V7 syntax) and `prompt-matrix.html`, published as an Artifact run sheet:
+  https://claude.ai/artifact/NPFQpoyCgdRGz1MpB1pot7
+- Repo is **public**, so raw GitHub URLs of REF-004/005 work directly as `--sref`.
+- Turnaround/A-pose/expressions now leave the instrument out; instrument has its own prop sheet. Map sheet uses a light `--oref` (`--ow 40`).
+
 ## 2026-10-29 — Session 2: grey-box city (level 1)
 - Scaffolded pnpm workspace: `packages/schema` (Zod `WorldDef`, blocks, lots, streets, encounters,
   block-anchored `WorldPoint`), `packages/world` (layout, seeded lot generator, markings, roof props,

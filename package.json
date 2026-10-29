@@ -9,7 +9,8 @@
     "test": "vitest run",
     "typecheck": "pnpm -r typecheck",
     "validate:worlds": "tsx tools/validate-worlds.ts",
-    "shots": "tsx tools/screenshot.ts"
+    "shots": "tsx tools/screenshot.ts",
+    "prompts": "tsx tools/build-prompts.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

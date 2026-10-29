@@ -1,0 +1,282 @@
+<title>Drummer Prompt Sheet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  /* Layout: settings strip → 7×5 run matrix (scan + tick) → one character's prompts in run order (copy). */
+  :root {
+    --bg: #e8e6e1;        /* sidewalk concrete */
+    --surface: #ffffff;
+    --sunk: #f3f2ee;
+    --ink: #1d1d22;
+    --muted: #63615c;
+    --line: #d3d0c8;
+    --accent: #ffd23f;    /* crosswalk / marker yellow */
+    --accent-ink: #1d1d22;
+    --hot: #e8650f;       /* musician orange */
+    --done: #2f8f6b;
+    --display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
+    --body: 'Archivo', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #1f2024; --surface: #2a2c31; --sunk: #232428; --ink: #ecebe7; --muted: #a3a19b; --line: #3c3e44;
+    --accent: #ffd23f; --accent-ink: #1d1d22; --hot: #ff8a3d; --done: #4fc192; color-scheme: dark; } }
+  :root[data-theme="dark"] {
+    --bg: #1f2024; --surface: #2a2c31; --sunk: #232428; --ink: #ecebe7; --muted: #a3a19b; --line: #3c3e44;
+    --accent: #ffd23f; --accent-ink: #1d1d22; --hot: #ff8a3d; --done: #4fc192; color-scheme: dark; }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-block: 28px 64px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 28px; }
+
+  header { display: grid; gap: 10px; }
+  .eyebrow { font: 700 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  h1 { margin: 0; font: 900 clamp(34px, 6vw, 56px)/0.95 var(--display); font-stretch: 112%; letter-spacing: -0.01em; text-wrap: balance; }
+  h1 .stripe { background: repeating-linear-gradient(90deg, var(--accent) 0 14px, transparent 14px 22px); background-size: 100% 8px; background-repeat: no-repeat; background-position: 0 92%; padding-bottom: 6px; }
+  h2 { margin: 0; font: 800 22px/1.1 var(--display); font-stretch: 108%; }
+  .steps { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; max-width: 68ch; counter-reset: s; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 8px; align-items: baseline; }
+  .steps li::before { content: counter(s); display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: var(--bg); font: 700 12px/1 var(--body); }
+
+  .settings { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 12px; align-items: end;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  label.field { display: grid; gap: 4px; min-width: 0; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  input[type=text], select { width: 100%; font: 13px/1.3 var(--mono); color: var(--ink); background: var(--sunk); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; min-width: 0; }
+  input[type=text]:focus-visible, select:focus-visible, button:focus-visible, .cell input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+  .matrix-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .progress { font: 600 14px/1 var(--body); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .progress b { color: var(--ink); }
+  .bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; margin-top: 8px; }
+  .bar i { display: block; height: 100%; background: var(--done); transition: width .3s; }
+  .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 720px; }
+  th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+  thead th { font: 700 12px/1.2 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--sunk); white-space: nowrap; }
+  thead th .n { color: var(--ink); margin-right: 4px; }
+  tbody tr:last-child td, tbody tr:last-child th { border-bottom: none; }
+  tbody th { font-weight: 700; white-space: nowrap; }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: var(--sunk); }
+  tbody tr.sel { background: color-mix(in srgb, var(--accent) 22%, var(--surface)); }
+  .cid { font: 600 12px/1 var(--mono); color: var(--muted); margin-right: 6px; }
+  .ph { font: 600 11px/1 var(--body); color: var(--hot); margin-left: 6px; text-transform: uppercase; letter-spacing: .05em; }
+  .cell { display: flex; align-items: center; gap: 8px; }
+  .cell input { width: 18px; height: 18px; accent-color: var(--done); margin: 0; }
+  .link { font-size: 11px; font-weight: 700; color: var(--hot); }
+  .link.ok { color: var(--done); }
+
+  button { font: 700 13px/1 var(--body); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 8px 12px; cursor: pointer; }
+  button:hover { border-color: var(--ink); }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  button.mini { padding: 5px 8px; font-size: 12px; }
+  button.copied { background: var(--done); border-color: var(--done); color: #fff; }
+
+  .chars { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { border-radius: 999px; padding: 8px 14px; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .detail { display: grid; gap: 14px; }
+  .detail-head { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: end; }
+  .ref { display: grid; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--hot); border-radius: 12px; padding: 12px 14px; }
+  .ref.ok { border-left-color: var(--done); }
+  .ref p { margin: 0; font-size: 13px; color: var(--muted); }
+  .cards { display: grid; gap: 12px; }
+  .card { display: grid; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; min-width: 0; }
+  .card.is-done { opacity: .62; }
+  .card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: space-between; }
+  .card-title { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .step { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 800 14px/1 var(--body); flex: none; }
+  .card h3 { margin: 0; font: 800 17px/1.2 var(--display); }
+  .why { margin: 0; font-size: 13px; color: var(--muted); max-width: 75ch; }
+  .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .actions label { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .actions input { width: 18px; height: 18px; accent-color: var(--done); }
+  pre { margin: 0; background: var(--sunk); border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: 12.5px/1.55 var(--mono); white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
+  pre mark { background: color-mix(in srgb, var(--hot) 25%, transparent); color: inherit; border-radius: 3px; padding: 0 2px; }
+  .save { font: 12px/1.3 var(--mono); color: var(--muted); }
+  .save b { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 720px) {
+    .settings { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Bucket Battle · Midjourney run sheet</div>
+    <h1><span class="stripe">Drummer Prompt Sheet</span></h1>
+    <ol class="steps">
+      <li><span>Pick a character and run <b>1. Hero turnaround</b>. Choose the best image and copy its URL.</span></li>
+      <li><span>Paste that URL into the character's <b>reference</b> box. Prompts 2, 3 and 5 update to keep the same kid.</span></li>
+      <li><span>Run the rest, tick each one off, and save results with the file name shown.</span></li>
+    </ol>
+  </header>
+
+  <section class="settings" aria-label="Settings">
+    <label class="field" for="hero-sref">Hero style reference (REF-005)
+      <input type="text" id="hero-sref" spellcheck="false">
+    </label>
+    <label class="field" for="map-sref">Map style reference (REF-004)
+      <input type="text" id="map-sref" spellcheck="false">
+    </label>
+    <label class="field" for="mj-version">Midjourney
+      <select id="mj-version">
+        <option value="v7">V7 (--oref)</option>
+        <option value="v6">V6 (--cref)</option>
+      </select>
+    </label>
+  </section>
+
+  <section aria-labelledby="matrix-title" style="display:grid;gap:12px">
+    <div class="matrix-head">
+      <h2 id="matrix-title">All prompts</h2>
+      <div style="min-width:220px">
+        <div class="progress" id="progress"></div>
+        <div class="bar"><i id="bar"></i></div>
+      </div>
+    </div>
+    <div class="scroll"><table id="matrix"></table></div>
+  </section>
+
+  <section class="detail" aria-labelledby="detail-title">
+    <div class="detail-head">
+      <h2 id="detail-title"></h2>
+      <button class="primary" id="copy-all">Copy all 5 prompts</button>
+    </div>
+    <div class="chars" id="chars" role="group" aria-label="Character"></div>
+    <div class="ref" id="ref-box">
+      <label class="field" for="char-ref" id="char-ref-label">Character reference URL</label>
+      <input type="text" id="char-ref" spellcheck="false" placeholder="Paste the URL of your chosen turnaround image">
+      <p id="ref-help"></p>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+</div>
+
+<script>
+const KIT = /*__KIT__*/null;
+const STORE_KEY = 'bb-prompt-sheet-v1';
+const state = load();
+function load() {
+  const base = { version: 'v7', heroSref: KIT.styleRefs.hero, mapSref: KIT.styleRefs.map, refs: {}, done: {}, selected: KIT.characters[1].id };
+  try { return Object.assign(base, JSON.parse(localStorage.getItem(STORE_KEY) || '{}')); } catch { return base; }
+}
+function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {} }
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const charById = (id) => KIT.characters.find((c) => c.id === id);
+const key = (c, s) => `${c}/${s}`;
+
+/** Final prompt text for a character + sheet, with refs filled per settings. */
+function promptFor(charId, sheetId, highlight = false) {
+  let p = KIT.prompts[charId][sheetId].replaceAll('{HERO_SREF}', state.heroSref).replaceAll('{MAP_SREF}', state.mapSref);
+  if (highlight) p = esc(p);
+  return p.replace(/\{CHAR_REF:(strong|light)\}/, (_, w) => {
+    const url = state.refs[charId];
+    const flag = state.version === 'v7' ? '--oref' : '--cref';
+    const weight = state.version === 'v7' ? `--ow ${w === 'strong' ? 100 : 40}` : `--cw ${w === 'strong' ? 100 : 30}`;
+    if (url) return `${flag} ${highlight ? esc(url) : url} ${weight}`;
+    const ph = `${flag} <${charId} turnaround URL> ${weight}`;
+    return highlight ? `<mark>${esc(ph)}</mark>` : ph;
+  });
+}
+
+async function copy(text, btn) {
+  try { await navigator.clipboard.writeText(text); }
+  catch {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch {}
+    ta.remove();
+  }
+  const old = btn.textContent;
+  btn.classList.add('copied'); btn.textContent = 'Copied';
+  setTimeout(() => { btn.classList.remove('copied'); btn.textContent = old; }, 1200);
+}
+
+function renderMatrix() {
+  const head = `<thead><tr><th>Character</th>${KIT.sheets.map((s, i) => `<th><span class="n">${i + 1}.</span>${s.label}</th>`).join('')}</tr></thead>`;
+  const rows = KIT.characters.map((c) => `<tr data-char="${c.id}" class="${c.id === state.selected ? 'sel' : ''}">
+    <th scope="row"><span class="cid">${c.id.slice(0, 2)}</span>${c.name}${c.placeholder ? '<span class="ph">placeholder</span>' : ''}</th>
+    ${KIT.sheets.map((s) => `<td><div class="cell">
+      <input type="checkbox" id="m-${c.id}-${s.id}" data-done="${key(c.id, s.id)}" ${state.done[key(c.id, s.id)] ? 'checked' : ''} aria-label="${c.name} ${s.label} done">
+      <button class="mini" data-copy-char="${c.id}" data-copy-sheet="${s.id}">Copy</button>
+      ${s.charRef ? `<span class="link ${state.refs[c.id] ? 'ok' : ''}" title="${state.refs[c.id] ? 'Character reference set' : 'Needs character reference'}">${state.refs[c.id] ? 'ref ✓' : 'ref'}</span>` : ''}
+    </div></td>`).join('')}
+  </tr>`).join('');
+  $('matrix').innerHTML = head + `<tbody>${rows}</tbody>`;
+  const total = KIT.characters.length * KIT.sheets.length;
+  const done = Object.values(state.done).filter(Boolean).length;
+  $('progress').innerHTML = `<b>${done}</b> of ${total} prompts run`;
+  $('bar').style.width = `${(done / total) * 100}%`;
+}
+
+function renderDetail() {
+  const c = charById(state.selected);
+  $('detail-title').textContent = `${c.id.slice(0, 2)} · ${c.name}${c.placeholder ? ' (placeholder design)' : ''}`;
+  $('chars').innerHTML = KIT.characters.map((ch) => `<button class="chip" aria-pressed="${ch.id === c.id}" data-select="${ch.id}">${ch.name}</button>`).join('');
+  $('char-ref').value = state.refs[c.id] || '';
+  $('char-ref-label').textContent = `${c.name} reference URL (from step 1)`;
+  $('ref-box').classList.toggle('ok', !!state.refs[c.id]);
+  $('ref-help').textContent = state.refs[c.id]
+    ? 'Set. Steps 2, 3 and 5 use this image to keep the character consistent.'
+    : 'Empty. Steps 2, 3 and 5 show a highlighted placeholder until you paste the URL of your chosen turnaround.';
+  $('cards').innerHTML = KIT.sheets.map((s, i) => {
+    const k = key(c.id, s.id);
+    return `<article class="card ${state.done[k] ? 'is-done' : ''}">
+      <div class="card-top">
+        <div class="card-title"><span class="step">${i + 1}</span><h3>${s.label}</h3></div>
+        <div class="actions">
+          <label for="d-${c.id}-${s.id}"><input type="checkbox" id="d-${c.id}-${s.id}" data-done="${k}" ${state.done[k] ? 'checked' : ''}> Done</label>
+          <button class="primary" data-copy-char="${c.id}" data-copy-sheet="${s.id}">Copy prompt</button>
+        </div>
+      </div>
+      <p class="why">${s.why}</p>
+      <pre>${promptFor(c.id, s.id, true)}</pre>
+      <div class="save">Save as <b>docs/references/images/char-${c.id}-${s.id}.png</b></div>
+    </article>`;
+  }).join('');
+}
+
+function render() { renderMatrix(); renderDetail(); }
+
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('button, tr[data-char]');
+  if (!t) return;
+  if (t.dataset.copyChar) { e.stopPropagation(); return copy(promptFor(t.dataset.copyChar, t.dataset.copySheet), t); }
+  if (t.dataset.select) { state.selected = t.dataset.select; save(); return render(); }
+  if (t.id === 'copy-all') return copy(KIT.sheets.map((s, i) => `# ${i + 1}. ${s.label}\n${promptFor(state.selected, s.id)}`).join('\n\n'), t);
+  if (t.matches('tr[data-char]') && !e.target.closest('input')) { state.selected = t.dataset.char; save(); render(); $('detail-title').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }
+});
+document.addEventListener('change', (e) => {
+  const t = e.target;
+  if (t.dataset.done) { state.done[t.dataset.done] = t.checked; save(); render(); }
+  if (t.id === 'mj-version') { state.version = t.value; save(); render(); }
+});
+document.addEventListener('input', (e) => {
+  const t = e.target;
+  if (t.id === 'char-ref') { state.refs[state.selected] = t.value.trim(); save(); renderMatrix(); updateCardsOnly(); }
+  if (t.id === 'hero-sref') { state.heroSref = t.value.trim() || KIT.styleRefs.hero; save(); updateCardsOnly(); }
+  if (t.id === 'map-sref') { state.mapSref = t.value.trim() || KIT.styleRefs.map; save(); updateCardsOnly(); }
+});
+/** Re-render prompt text without stealing focus from the input being typed in. */
+function updateCardsOnly() {
+  const c = charById(state.selected);
+  document.querySelectorAll('#cards pre').forEach((pre, i) => { pre.innerHTML = promptFor(c.id, KIT.sheets[i].id, true); });
+  $('ref-box').classList.toggle('ok', !!state.refs[c.id]);
+  $('ref-help').textContent = state.refs[c.id]
+    ? 'Set. Steps 2, 3 and 5 use this image to keep the character consistent.'
+    : 'Empty. Steps 2, 3 and 5 show a highlighted placeholder until you paste the URL of your chosen turnaround.';
+}
+
+$('hero-sref').value = state.heroSref;
+$('map-sref').value = state.mapSref;
+$('mj-version').value = state.version;
+render();
+</script>
