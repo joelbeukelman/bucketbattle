@@ -22,18 +22,62 @@
     {
       "id": "apose",
       "label": "A-pose",
-      "why": "Front and side in a rigging pose. Uses the turnaround as a strong reference so it's the same kid.",
-      "template": "3D character rigging sheet, front view and side view side by side, full body A-pose, arms straight and angled 45 degrees down and away from the body, palms facing down, legs shoulder-width apart, same character and outfit as the reference image, {IDENTITY}, {STYLE:hero}",
-      "params": "--ar 3:2 --style raw --sref {HERO_SREF} {FACETED_SREF} {CHAR_REF:strong} --no text, instrument, props, extra limbs",
-      "charRef": "strong"
+      "why": "One pose per image, front and side, for rigging. References the single-figure front crop only (no group-shot style refs), so Midjourney returns one character instead of a lineup.",
+      "template": "full body 3D character model of one character standing in a neutral A-pose, {VARIANT}, arms straight and held out 45 degrees from the body, palms facing down, legs slightly apart, single character, centered, full figure in frame, {IDENTITY}, low-poly faceted 3D game character, hard flat-shaded polygon facets, large ears, big dark heavy-lidded eyes, plain neutral gray studio background, soft even lighting",
+      "params": "--ar 2:3 --style raw {CHAR_REF:strong} --no multiple characters, lineup, turnaround, text, instrument",
+      "charRef": "strong",
+      "variants": [
+        {
+          "id": "front",
+          "label": "Front",
+          "text": "front view facing the camera, perfectly symmetrical"
+        },
+        {
+          "id": "side",
+          "label": "Side",
+          "text": "side profile view facing left"
+        }
+      ]
     },
     {
       "id": "expressions",
       "label": "Expressions",
-      "why": "Six close-ups for battle reactions, as a 3×2 grid.",
-      "template": "character expression sheet, six head-and-shoulders portraits of the same character in a 3 by 2 grid, expressions: neutral deadpan, focused concentration, smug grin, wide-eyed surprise, triumphant shout, defeated slump, same face, hat and hair in every panel, {IDENTITY}, {STYLE:hero}",
-      "params": "--ar 3:2 --style raw --sref {HERO_SREF} {FACETED_SREF} {CHAR_REF:strong} --no text, labels, full body",
-      "charRef": "strong"
+      "why": "One face per image, square close-ups. Six emotions for battle reactions.",
+      "template": "close-up portrait of one 3D game character, head and shoulders, facing the camera, {VARIANT}, {IDENTITY}, low-poly faceted 3D game character, hard flat-shaded polygon facets, large ears, big dark heavy-lidded eyes, plain neutral gray studio background, soft even lighting",
+      "params": "--ar 1:1 --style raw {CHAR_REF:strong} --no multiple characters, lineup, text, full body",
+      "charRef": "strong",
+      "variants": [
+        {
+          "id": "neutral",
+          "label": "Neutral",
+          "text": "neutral deadpan stare"
+        },
+        {
+          "id": "focused",
+          "label": "Focused",
+          "text": "intense focused concentration, eyes narrowed, lips pressed"
+        },
+        {
+          "id": "smug",
+          "label": "Smug",
+          "text": "smug confident half grin, one eyebrow raised"
+        },
+        {
+          "id": "surprised",
+          "label": "Surprised",
+          "text": "wide-eyed surprise, mouth open"
+        },
+        {
+          "id": "triumphant",
+          "label": "Triumphant",
+          "text": "triumphant shout, big open-mouth grin, eyes squeezed with joy"
+        },
+        {
+          "id": "defeated",
+          "label": "Defeated",
+          "text": "defeated and deflated, eyes half closed, head tilted down, frown"
+        }
+      ]
     },
     {
       "id": "instrument",
@@ -48,7 +92,7 @@
       "label": "Map version",
       "why": "Small, chunky version for the city map. Leads with the chibi proportions and uses only a light reference, so it keeps the outfit without copying the lanky body.",
       "template": "{STYLE:map}, turnaround sheet with front view, three-quarter view and back view, full body, holding {INSTRUMENT}, outfit: {IDENTITY}",
-      "params": "--ar 16:9 --style raw --sref {MAP_SREF} {CHAR_REF:light} --no text, tall, lanky, thin limbs",
+      "params": "--ar 16:9 --style raw --sref {MAP_SREF} --sw 100 {CHAR_REF:light} --no text, tall, lanky, thin limbs, separate props",
       "charRef": "light"
     }
   ],
@@ -57,7 +101,10 @@
       "id": "00-busker",
       "name": "Bucket Busker",
       "genre": "Level 1 opener",
-      "have": ["turnaround"],
+      "have": [
+        "turnaround",
+        "front"
+      ],
       "note": "Turnaround is inconsistent: the second view has a different patch-covered jacket and a pom-pom beanie, and there's no back view. Usable as a reference, but re-roll the turnaround before modeling.",
       "look": "young street performer, light skin, black knit beanie with neon patches, oversized mustard bomber jacket covered in small sewn-on patches over a dark green hoodie, cuffed camo cargo pants, black and red high-top sneakers",
       "identity": "young street performer, black patched beanie, mustard patch-covered bomber jacket, dark green hoodie, camo cargo pants, black and red high-tops",
@@ -67,7 +114,11 @@
       "id": "01-rap",
       "name": "Rap",
       "genre": "Rap",
-      "have": ["turnaround", "map"],
+      "have": [
+        "turnaround",
+        "map",
+        "front"
+      ],
       "note": "Turnaround is the best match for the hero style so far, and is used as an extra style reference for everyone. The map version kept lanky proportions; re-run it with the new chibi-first prompt.",
       "look": "teen drummer, medium brown skin, short twists, backward black snapback, thick gold cuban chain, oversized slate-blue hoodie with orange and navy patterned cuffs, black shorts, white tube socks with red stripes, chunky gray and yellow platform sneakers",
       "identity": "teen boy, medium brown skin, short twists, backward black snapback, thick gold chain, slate-blue hoodie with orange patterned cuffs, black shorts, red-striped white tube socks, chunky gray and yellow sneakers",
@@ -77,7 +128,10 @@
       "id": "02-metal",
       "name": "Metal",
       "genre": "Metal",
-      "have": ["turnaround"],
+      "have": [
+        "turnaround",
+        "front"
+      ],
       "note": "Strong silhouette (beanie, sunglasses, long hair). Rendered smoother than the faceted target and has two side views instead of a back view. Good enough as a reference; optional re-roll.",
       "look": "very tall lanky teen drummer, light tan skin, very long straight black hair, black beanie, black square sunglasses, oversized black tee with a neon graffiti graphic, ripped teal skinny jeans, stacks of colorful wristbands and rings, black and red high-top sneakers",
       "identity": "very tall lanky teen, long straight black hair, black beanie, black square sunglasses, oversized black tee with neon graffiti graphic, ripped teal skinny jeans, colorful wristbands, black and red high-tops",
@@ -87,7 +141,10 @@
       "id": "03-country",
       "name": "Country",
       "genre": "Country",
-      "have": ["turnaround"],
+      "have": [
+        "turnaround",
+        "front"
+      ],
       "note": "Good: has front, back and side. The undershirt changes from orange to teal between views; teal is used as canonical.",
       "look": "teen drummer, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel shirt over a teal t-shirt, thin silver chain, small gold earring, dark gray skinny jeans, mustard work boots",
       "identity": "teen boy, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel over a teal t-shirt, dark gray skinny jeans, mustard work boots",
@@ -97,7 +154,10 @@
       "id": "04-jazz",
       "name": "Jazz",
       "genre": "Jazz",
-      "have": ["turnaround"],
+      "have": [
+        "turnaround",
+        "front"
+      ],
       "note": "Headwear changes between views (purple beanie twice, a patterned headband once) and there's no side view. Purple beanie is used as canonical. Re-roll the turnaround before modeling.",
       "look": "small teen drummer, light tan skin, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal socks with red stripes, tan suede boots, stacked colorful wristbands, ear piercings",
       "identity": "small teen girl, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal striped socks, tan suede boots",
@@ -121,5 +181,6 @@
       "identity": "teen, messy sandy dreadlocks, white headband, teal pink and yellow colorblock jacket, lilac sweater, olive shorts, red and teal high-tops, small backpack",
       "instrument": "drum practice pad with drumsticks"
     }
-  ]
+  ],
+  "refNote": "Character references use char-<id>-front.jpg (a single-figure crop made by tools/crop-fronts.py); falls back to the turnaround."
 }

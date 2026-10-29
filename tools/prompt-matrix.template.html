@@ -101,6 +101,13 @@
   .note { margin: 0; padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 18%, var(--surface)); border: 1px solid var(--line); font-size: 14px; max-width: 90ch; }
   .have { font: 700 12px/1 var(--body); color: var(--done); text-decoration: none; white-space: nowrap; }
   .have:hover { text-decoration: underline; }
+  .cnt { font: 700 11px/1 var(--body); color: var(--muted); letter-spacing: .04em; }
+  .count { font: 700 13px/1 var(--body); font-variant-numeric: tabular-nums; color: var(--muted); min-width: 30px; }
+  .count.full { color: var(--done); }
+  .shot { display: grid; gap: 8px; padding-top: 12px; border-top: 1px dashed var(--line); min-width: 0; }
+  .shot.is-done { opacity: .62; }
+  .shot-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+  .card.is-done .shot.is-done { opacity: 1; }
   .version-help { margin: 0; font-size: 13px; color: var(--muted); grid-column: 1 / -1; max-width: 90ch; }
   .save b { color: var(--ink); font-weight: 600; }
 
@@ -115,8 +122,8 @@
     <div class="eyebrow">Bucket Battle · Midjourney run sheet</div>
     <h1><span class="stripe">Drummer Prompt Sheet</span></h1>
     <ol class="steps">
-      <li><span>Characters marked <b>✓ in repo</b> already have a turnaround, and their other prompts reference it automatically.</span></li>
-      <li><span>For Marching and K-pop, run <b>1. Hero turnaround</b> first, then send the result to Claude to add to the repo, or paste its URL in the reference box.</span></li>
+      <li><span>Every prompt makes <b>one image</b>. A-pose is two shots (front, side) and expressions are six close-ups, because Midjourney copies multi-figure layouts from references.</span></li>
+      <li><span>Follow-ups reference a single-figure front crop of each turnaround, already in the repo for 5 characters. For Marching and K-pop, run the turnaround first and send it to Claude to crop.</span></li>
       <li><span>Run the rest, tick each one off, and save results with the file name shown.</span></li>
     </ol>
   </header>
@@ -171,7 +178,7 @@ const STORE_KEY = 'bb-prompt-sheet-v1';
 const VERSION_FLAG = { v7: '--v 7', v8: '', v6: '--v 6.1' };
 const state = load();
 function load() {
-  const base = { version: 'v7', heroSref: KIT.styleRefs.hero, mapSref: KIT.styleRefs.map, refs: {}, done: {}, selected: (KIT.characters.find((c) => !c.have.includes('apose')) || KIT.characters[0]).id };
+  const base = { version: 'v7', heroSref: KIT.styleRefs.hero, mapSref: KIT.styleRefs.map, refs: {}, done: {}, selected: (KIT.characters.find((c) => c.ref && !c.have.includes('apose-front')) || KIT.characters[0]).id };
   try { return Object.assign(base, JSON.parse(localStorage.getItem(STORE_KEY) || '{}')); } catch { return base; }
 }
 function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {} }
@@ -184,8 +191,8 @@ const key = (c, s) => `${c}/${s}`;
 const refFor = (charId) => state.refs[charId] || charById(charId).ref || '';
 
 /** Final prompt text for a character + sheet, with refs filled per settings. */
-function promptFor(charId, sheetId, highlight = false) {
-  let p = KIT.prompts[charId][sheetId]
+function promptFor(charId, shotId, highlight = false) {
+  let p = KIT.prompts[charId][shotId]
     .replaceAll('{HERO_SREF}', state.heroSref).replaceAll('{MAP_SREF}', state.mapSref).replaceAll('{FACETED_SREF}', KIT.styleRefs.faceted);
   if (highlight) p = esc(p);
   p = p.replace('{VERSION}', VERSION_FLAG[state.version] || '');
@@ -196,12 +203,12 @@ function promptFor(charId, sheetId, highlight = false) {
   p = p.replace(/\{CHAR_REF:(strong|light)\}/, (_, w) => {
     if (state.version === 'v8') {
       // V8 dropped Omni Reference: the turnaround goes first as an image prompt, weighted with --iw.
-      prefix = url ? shown(url) + ' ' : missing(`<${charId} turnaround URL>`) + ' ';
+      prefix = url ? shown(url) + ' ' : missing(`<${charId} front URL>`) + ' ';
       return `--iw ${w === 'strong' ? 2 : 0.75}`;
     }
     const flag = state.version === 'v6' ? '--cref' : '--oref';
     const weight = state.version === 'v6' ? `--cw ${w === 'strong' ? 100 : 20}` : `--ow ${w === 'strong' ? 100 : 25}`;
-    return url ? `${flag} ${shown(url)} ${weight}` : missing(`${flag} <${charId} turnaround URL> ${weight}`);
+    return url ? `${flag} ${shown(url)} ${weight}` : missing(`${flag} <${charId} front URL> ${weight}`);
   });
   return (prefix + p).replace(/ {2,}/g, ' ').trim();
 }
@@ -219,55 +226,81 @@ async function copy(text, btn) {
   setTimeout(() => { btn.classList.remove('copied'); btn.textContent = old; }, 1200);
 }
 
+const allShots = KIT.sheets.flatMap((s) => s.shots.map((sh) => ({ ...sh, sheet: s })));
+const isDone = (c, shotId) => c.have.includes(shotId) || !!state.done[key(c.id, shotId)];
+
 function renderMatrix() {
-  const head = `<thead><tr><th>Character</th>${KIT.sheets.map((s, i) => `<th><span class="n">${i + 1}.</span>${s.label}</th>`).join('')}</tr></thead>`;
+  const head = `<thead><tr><th>Character</th>${KIT.sheets.map((s, i) => `<th><span class="n">${i + 1}.</span>${s.label}${s.shots.length > 1 ? ` <span class="cnt">×${s.shots.length}</span>` : ''}</th>`).join('')}</tr></thead>`;
   const rows = KIT.characters.map((c) => `<tr data-char="${c.id}" class="${c.id === state.selected ? 'sel' : ''}">
     <th scope="row"><span class="cid">${c.id.slice(0, 2)}</span>${c.name}${c.note ? '<span class="ph" title="Has review notes">notes</span>' : ''}</th>
-    ${KIT.sheets.map((s) => `<td><div class="cell">
-      ${c.have.includes(s.id)
-        ? `<a class="have" href="${c.images[s.id]}" target="_blank" rel="noopener" title="Open the image in the repo">✓ in repo</a>`
-        : `<input type="checkbox" id="m-${c.id}-${s.id}" data-done="${key(c.id, s.id)}" ${state.done[key(c.id, s.id)] ? 'checked' : ''} aria-label="${c.name} ${s.label} done">`}
-      <button class="mini" data-copy-char="${c.id}" data-copy-sheet="${s.id}">${c.have.includes(s.id) ? 'Re-roll' : 'Copy'}</button>
-      ${s.charRef && !refFor(c.id) ? `<span class="link" title="Needs a turnaround first">needs 1</span>` : ''}
-    </div></td>`).join('')}
+    ${KIT.sheets.map((s) => {
+      const needs = s.charRef && !refFor(c.id) ? `<span class="link" title="Needs a turnaround first">needs 1</span>` : '';
+      if (s.shots.length === 1) {
+        const sh = s.shots[0];
+        return `<td><div class="cell">
+          ${c.have.includes(sh.id)
+            ? `<a class="have" href="${c.images[sh.id]}" target="_blank" rel="noopener" title="Open the image in the repo">✓ in repo</a>`
+            : `<input type="checkbox" id="m-${c.id}-${sh.id}" data-done="${key(c.id, sh.id)}" ${state.done[key(c.id, sh.id)] ? 'checked' : ''} aria-label="${c.name} ${s.label} done">`}
+          <button class="mini" data-copy-char="${c.id}" data-copy-shot="${sh.id}">${c.have.includes(sh.id) ? 'Re-roll' : 'Copy'}</button>${needs}
+        </div></td>`;
+      }
+      const done = s.shots.filter((sh) => isDone(c, sh.id)).length;
+      return `<td><div class="cell">
+        <span class="count ${done === s.shots.length ? 'full' : ''}">${done}/${s.shots.length}</span>
+        <button class="mini" data-open-char="${c.id}" data-open-sheet="${s.id}">Open</button>${needs}
+      </div></td>`;
+    }).join('')}
   </tr>`).join('');
   $('matrix').innerHTML = head + `<tbody>${rows}</tbody>`;
-  const total = KIT.characters.length * KIT.sheets.length;
-  const done = KIT.characters.reduce((n, c) => n + KIT.sheets.filter((s) => c.have.includes(s.id) || state.done[key(c.id, s.id)]).length, 0);
-  $('progress').innerHTML = `<b>${done}</b> of ${total} sheets done`;
+  const total = KIT.characters.length * allShots.length;
+  const done = KIT.characters.reduce((n, c) => n + allShots.filter((sh) => isDone(c, sh.id)).length, 0);
+  $('progress').innerHTML = `<b>${done}</b> of ${total} images done`;
   $('bar').style.width = `${(done / total) * 100}%`;
 }
 
 function renderDetail() {
   const c = charById(state.selected);
   $('detail-title').textContent = `${c.id.slice(0, 2)} · ${c.name}`;
+  $('copy-all').textContent = `Copy all ${allShots.length} prompts`;
   $('note').hidden = !c.note;
   $('note').textContent = c.note;
   $('chars').innerHTML = KIT.characters.map((ch) => `<button class="chip" aria-pressed="${ch.id === c.id}" data-select="${ch.id}">${ch.name}</button>`).join('');
   $('char-ref').value = state.refs[c.id] || '';
-  $('char-ref').placeholder = c.ref ? `Using the turnaround in the repo. Paste a different URL to override.` : 'Paste the URL of your chosen turnaround image';
-  $('char-ref-label').textContent = `${c.name} reference (turnaround)`;
+  $('char-ref').placeholder = c.ref ? 'Using the single-figure front image in the repo. Paste a different URL to override.' : 'Paste the URL of a single-figure front view';
+  $('char-ref-label').textContent = `${c.name} reference (single figure, front)`;
+  updateRefBox(c);
+  $('cards').innerHTML = KIT.sheets.map((s, i) => {
+    const allDone = s.shots.every((sh) => isDone(c, sh.id));
+    return `<article class="card ${allDone ? 'is-done' : ''}" id="sheet-${s.id}">
+      <div class="card-top">
+        <div class="card-title"><span class="step">${i + 1}</span><h3>${s.label}</h3>${s.shots.length > 1 ? `<span class="cnt">${s.shots.length} images</span>` : ''}</div>
+      </div>
+      <p class="why">${s.why}</p>
+      ${s.shots.map((sh) => {
+        const k = key(c.id, sh.id);
+        const have = c.have.includes(sh.id);
+        return `<div class="shot ${isDone(c, sh.id) ? 'is-done' : ''}">
+          <div class="shot-top">
+            <strong>${s.shots.length > 1 ? sh.label : 'Prompt'}</strong>
+            <div class="actions">
+              ${have ? `<a class="have" href="${c.images[sh.id]}" target="_blank" rel="noopener">✓ In repo · view</a>` : `<label for="d-${c.id}-${sh.id}"><input type="checkbox" id="d-${c.id}-${sh.id}" data-done="${k}" ${state.done[k] ? 'checked' : ''}> Done</label>`}
+              <button class="primary" data-copy-char="${c.id}" data-copy-shot="${sh.id}">${have ? 'Copy to re-roll' : 'Copy'}</button>
+            </div>
+          </div>
+          <pre data-shot="${sh.id}">${promptFor(c.id, sh.id, true)}</pre>
+          <div class="save">Save as <b>docs/references/images/char-${c.id}-${sh.id}.jpg</b></div>
+        </div>`;
+      }).join('')}
+    </article>`;
+  }).join('');
+}
+
+function updateRefBox(c) {
   $('ref-box').classList.toggle('ok', !!refFor(c.id));
   $('ref-help').textContent = state.refs[c.id]
     ? 'Using your pasted URL. Clear the box to go back to the image in the repo.'
-    : c.ref ? 'Using the turnaround already in the repo. Steps 2, 3 and 5 reference it automatically.'
-    : 'No turnaround yet. Run step 1, then paste the URL of the best result here.';
-  $('cards').innerHTML = KIT.sheets.map((s, i) => {
-    const k = key(c.id, s.id);
-    const have = c.have.includes(s.id);
-    return `<article class="card ${state.done[k] || have ? 'is-done' : ''}">
-      <div class="card-top">
-        <div class="card-title"><span class="step">${i + 1}</span><h3>${s.label}</h3></div>
-        <div class="actions">
-          ${have ? `<a class="have" href="${c.images[s.id]}" target="_blank" rel="noopener">✓ In repo · view</a>` : `<label for="d-${c.id}-${s.id}"><input type="checkbox" id="d-${c.id}-${s.id}" data-done="${k}" ${state.done[k] ? 'checked' : ''}> Done</label>`}
-          <button class="primary" data-copy-char="${c.id}" data-copy-sheet="${s.id}">${have ? 'Copy to re-roll' : 'Copy prompt'}</button>
-        </div>
-      </div>
-      <p class="why">${s.why}</p>
-      <pre>${promptFor(c.id, s.id, true)}</pre>
-      <div class="save">Save as <b>docs/references/images/char-${c.id}-${s.id}.jpg</b></div>
-    </article>`;
-  }).join('');
+    : c.ref ? 'Using the single-figure front crop in the repo. A-pose, expressions and map reference it automatically.'
+    : 'No reference yet. Run the turnaround, then send it to Claude to crop a front view, or paste a single-figure image URL here.';
 }
 
 function render() { renderMatrix(); renderDetail(); }
@@ -275,9 +308,14 @@ function render() { renderMatrix(); renderDetail(); }
 document.addEventListener('click', (e) => {
   const t = e.target.closest('button, tr[data-char]');
   if (!t) return;
-  if (t.dataset.copyChar) { e.stopPropagation(); return copy(promptFor(t.dataset.copyChar, t.dataset.copySheet), t); }
+  if (t.dataset.copyChar) { e.stopPropagation(); return copy(promptFor(t.dataset.copyChar, t.dataset.copyShot), t); }
+  if (t.dataset.openChar) {
+    e.stopPropagation();
+    state.selected = t.dataset.openChar; save(); render();
+    return $(`sheet-${t.dataset.openSheet}`).scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  }
   if (t.dataset.select) { state.selected = t.dataset.select; save(); return render(); }
-  if (t.id === 'copy-all') return copy(KIT.sheets.map((s, i) => `# ${i + 1}. ${s.label}\n${promptFor(state.selected, s.id)}`).join('\n\n'), t);
+  if (t.id === 'copy-all') return copy(allShots.map((sh) => `# ${sh.sheet.label}${sh.sheet.shots.length > 1 ? ` · ${sh.label}` : ''}\n${promptFor(state.selected, sh.id)}`).join('\n\n'), t);
   if (t.matches('tr[data-char]') && !e.target.closest('input')) { state.selected = t.dataset.char; save(); render(); $('detail-title').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }
 });
 document.addEventListener('change', (e) => {
@@ -294,12 +332,8 @@ document.addEventListener('input', (e) => {
 /** Re-render prompt text without stealing focus from the input being typed in. */
 function updateCardsOnly() {
   const c = charById(state.selected);
-  document.querySelectorAll('#cards pre').forEach((pre, i) => { pre.innerHTML = promptFor(c.id, KIT.sheets[i].id, true); });
-  $('ref-box').classList.toggle('ok', !!refFor(c.id));
-  $('ref-help').textContent = state.refs[c.id]
-    ? 'Using your pasted URL. Clear the box to go back to the image in the repo.'
-    : c.ref ? 'Using the turnaround already in the repo. Steps 2, 3 and 5 reference it automatically.'
-    : 'No turnaround yet. Run step 1, then paste the URL of the best result here.';
+  document.querySelectorAll('#cards pre[data-shot]').forEach((pre) => { pre.innerHTML = promptFor(c.id, pre.dataset.shot, true); });
+  updateRefBox(c);
 }
 
 $('hero-sref').value = state.heroSref;

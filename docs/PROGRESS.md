@@ -15,6 +15,13 @@ See `docs/ARCHITECTURE.md` §9.
 
 ---
 
+## 2026-10-29 — Session 2d: fixing A-pose / expression prompts
+- Problem: A-pose and expression prompts returned the same lineup image as the turnaround.
+- Cause: every reference (REF-005 group shot, rap turnaround `--sref`, 4-view turnaround `--oref`) showed several figures in a row; Midjourney copied that layout.
+- Fix: `tools/crop-fronts.py` crops a single front figure per turnaround (`char-<id>-front.jpg`), used as the only reference for follow-ups;
+  A-pose and expressions no longer use the group-shot `--sref`. Each prompt now makes one image: A-pose = front + side, expressions = 6 close-ups (77 prompts total).
+- Skill `add-reference` now covers character sheets: review, crop, update `have`, regenerate, push, republish.
+
 ## 2026-10-29 — Session 2c: first character images
 - Added 5 turnarounds (busker, rap, metal, country, jazz) + rap map version as `docs/references/images/char-*.jpg`; reviewed in references README.
 - prompt-kit.json: `look`/`identity` rewritten to match the accepted images; `have` lists what's in the repo; `note` holds review notes.
