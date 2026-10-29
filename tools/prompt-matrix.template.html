@@ -98,6 +98,8 @@
   pre { margin: 0; background: var(--sunk); border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: 12.5px/1.55 var(--mono); white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
   pre mark { background: color-mix(in srgb, var(--hot) 25%, transparent); color: inherit; border-radius: 3px; padding: 0 2px; }
   .save { font: 12px/1.3 var(--mono); color: var(--muted); }
+  .v8note { margin: 0; font-size: 13px; font-weight: 600; color: var(--hot); }
+  .version-help { margin: 0; font-size: 13px; color: var(--muted); grid-column: 1 / -1; max-width: 90ch; }
   .save b { color: var(--ink); font-weight: 600; }
 
   @media (max-width: 720px) {
@@ -126,10 +128,12 @@
     </label>
     <label class="field" for="mj-version">Midjourney
       <select id="mj-version">
-        <option value="v7">V7 (--oref)</option>
-        <option value="v6">V6 (--cref)</option>
+        <option value="v7">V7 · keeps character (recommended)</option>
+        <option value="v8">V8 · attach image instead</option>
+        <option value="v6">V6.1 · --cref</option>
       </select>
     </label>
+    <p class="version-help">Midjourney V8.x dropped Omni Reference (<code>--oref</code>), which keeps a character consistent. <b>V7</b> adds <code>--v 7</code> to every prompt so it works on any default. <b>V8</b> removes it, and you attach the step-1 image by hand.</p>
   </section>
 
   <section aria-labelledby="matrix-title" style="display:grid;gap:12px">
@@ -161,6 +165,7 @@
 <script>
 const KIT = /*__KIT__*/null;
 const STORE_KEY = 'bb-prompt-sheet-v1';
+const VERSION_FLAG = { v7: '--v 7', v8: '', v6: '--v 6.1' };
 const state = load();
 function load() {
   const base = { version: 'v7', heroSref: KIT.styleRefs.hero, mapSref: KIT.styleRefs.map, refs: {}, done: {}, selected: KIT.characters[1].id };
@@ -177,14 +182,18 @@ const key = (c, s) => `${c}/${s}`;
 function promptFor(charId, sheetId, highlight = false) {
   let p = KIT.prompts[charId][sheetId].replaceAll('{HERO_SREF}', state.heroSref).replaceAll('{MAP_SREF}', state.mapSref);
   if (highlight) p = esc(p);
-  return p.replace(/\{CHAR_REF:(strong|light)\}/, (_, w) => {
+  p = p.replace('{VERSION}', VERSION_FLAG[state.version] || '');
+  p = p.replace(/\{CHAR_REF:(strong|light)\}/, (_, w) => {
+    // V8 has no Omni Reference: the reference image is attached in the prompt bar instead.
+    if (state.version === 'v8') return '';
     const url = state.refs[charId];
-    const flag = state.version === 'v7' ? '--oref' : '--cref';
-    const weight = state.version === 'v7' ? `--ow ${w === 'strong' ? 100 : 40}` : `--cw ${w === 'strong' ? 100 : 30}`;
+    const flag = state.version === 'v6' ? '--cref' : '--oref';
+    const weight = state.version !== 'v6' ? `--ow ${w === 'strong' ? 100 : 40}` : `--cw ${w === 'strong' ? 100 : 30}`;
     if (url) return `${flag} ${highlight ? esc(url) : url} ${weight}`;
     const ph = `${flag} <${charId} turnaround URL> ${weight}`;
     return highlight ? `<mark>${esc(ph)}</mark>` : ph;
   });
+  return p.replace(/ {2,}/g, ' ').trim();
 }
 
 async function copy(text, btn) {
@@ -238,6 +247,7 @@ function renderDetail() {
         </div>
       </div>
       <p class="why">${s.why}</p>
+      ${s.charRef && state.version === 'v8' ? `<p class="v8note">V8: drag your step-1 turnaround image into the prompt bar as an image reference before running this.</p>` : ''}
       <pre>${promptFor(c.id, s.id, true)}</pre>
       <div class="save">Save as <b>docs/references/images/char-${c.id}-${s.id}.png</b></div>
     </article>`;
