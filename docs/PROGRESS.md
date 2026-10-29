@@ -8,12 +8,18 @@ Maintained by the `log-progress` skill.
 2. Studio spike: `apps/studio` with game lighting from a shared `packages/engine`, a reference-image overlay, faceted primitives; block out the busker (map rendition).
 3. `CityKitDef` for `kit.nyc` (ADR-0003): move palette + theme→massing rules out of `apps/game/src/palette.ts`; add stoops, awnings, and fire escapes as the first kit pieces.
 4. World detail pass: storefront awnings/signs on shop ground floors, more roof variety (W10), place the six school kids as locked markers near the school.
-5. User: turnarounds for Marching + K-pop, re-rolls for Busker + Jazz, then A-pose/expressions/instrument/map via the run sheet; confirm how futuristic the city is (W9).
+5. User: hard-faceted turnarounds for Busker, Metal, Country, Jazz (re-roll), Marching, K-pop (new); Rap follow-ups; confirm how futuristic the city is (W9).
 
 ## Open questions
 See `docs/ARCHITECTURE.md` §9.
 
 ---
+
+## 2026-10-29 — Session 2e: poly, not smooth
+- User decision: every character is hard-faceted poly (new principle C7). Busker images were smooth/Pixar-like.
+- Moved smooth images (busker set, metal/country/jazz turnarounds + crops) to `docs/references/images/explore/` as outfit references; only Rap and the busker instrument stay accepted.
+- Prompts: rap front crop is now the faceted `--sref` (single figure, so no lineup leak) on turnaround, A-pose and expressions with `--sw 250`;
+  style text says "sharp angular mesh, visible flat facets, no smooth surfaces"; `--no smooth shading, pixar style, plastic, glossy, subsurface skin, realistic`.
 
 ## 2026-10-29 — Session 2d: fixing A-pose / expression prompts
 - Problem: A-pose and expression prompts returned the same lineup image as the turnaround.

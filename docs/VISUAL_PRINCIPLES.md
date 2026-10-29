@@ -80,6 +80,10 @@ Format for each principle: **rule** — why — how to check it.
 - **C5 Hero rendition = lanky faceted teen.** About 6–6.5 heads tall, thin limbs,
   large ears, big dark heavy-lidded eyes, visible flat facets, oversized hats
   and shoes, patterns painted into textures. (REF-005)
+- **C7 Hard-faceted poly for every character, never smooth.** Kids, adults and NPCs alike:
+  sharp angular low-poly with visible flat facets. No smooth or Pixar-style shading, glossy plastic,
+  or subsurface skin. The rap turnaround (`char-01-rap-*`) is the style anchor. (User decision
+  2026-10-29) — check: facets visible on face, clothes and shoes at full-size view.
 - **C6 Instruments read at every scale.** Instruments (drums, sticks, buckets) are
   slightly oversized compared with real life and use the character's accent color.
   (REF-004, REF-005)
@@ -93,6 +97,7 @@ Format for each principle: **rule** — why — how to check it.
   objectives off-screen are shown with an edge arrow in the accent yellow. (REF-002)
 
 ## Change log
+- 2026-10-29: C7 added: hard-faceted poly for all characters (user: "poly not smooth").
 - 2026-10-29: initial provisional set.
 - 2026-10-29: REF-006–008 added. Revised W3 (lots), W6 (trim sheet), W8 (diorama map); added W10–W12.
 - 2026-10-29: W9 added (provisional) from the narrative premise.

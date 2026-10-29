@@ -8,12 +8,10 @@ Usage: python3 tools/crop-fronts.py
 from PIL import Image
 
 IMAGES = 'docs/references/images'
+# Add an entry per accepted turnaround. Boxes for the earlier smooth turnarounds
+# (now in images/explore/) were busker 0.08-0.29, metal 0.40-0.60, country 0.30-0.52, jazz 0.14-0.37.
 CROPS = {
-    '01-rap': (0.05, 0.29),       # view 1: front
-    '00-busker': (0.08, 0.29),    # view 1: front (canonical mustard jacket)
-    '02-metal': (0.40, 0.60),     # view 3: front
-    '03-country': (0.30, 0.52),   # view 2: front
-    '04-jazz': (0.14, 0.37),      # view 1: front-ish, purple beanie (canonical)
+    '01-rap': (0.05, 0.29),       # view 1: front. Also the faceted --sref for every hero prompt.
 }
 
 for char, (x0, x1) in CROPS.items():

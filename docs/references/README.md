@@ -163,17 +163,15 @@ Each entry is added with the `add-reference` skill. Keep the format:
 Canonical designs once accepted. Review notes live in `docs/characters/prompt-kit.json` (`note`)
 and show on the run sheet. The descriptions in prompt-kit.json were rewritten to match these images.
 
-| File | Character | Review |
+| File | Character | Status |
 |---|---|---|
-| `images/char-01-rap-turnaround.jpg` | Rap | ✅ Best match to C5 (hard facets, ears, eyes, chunky shoes). Used as an extra style reference for everyone. |
-| `images/char-01-rap-map.jpg` | Rap (map) | ⚠️ Pixel textures fit C4, but proportions are still lanky; kit props drawn separately. Re-run with the chibi-first prompt. |
-| `images/char-00-busker-turnaround.jpg` | Bucket Busker | ⚠️ Inconsistent between views (jacket, beanie), no back view, smoother than C5. Re-roll. |
-| `images/char-00-busker-apose-front.jpg` | Bucket Busker | ✅ Clean front A-pose, outfit matches the turnaround. Usable for rigging. |
-| `images/char-00-busker-expressions-*.jpg` | Bucket Busker | ✅ focused, surprised, triumphant, defeated read clearly (full body, not close-ups). ⚠️ neutral is off-model (green vest). Smug still missing. |
-| `images/char-00-busker-instrument.jpg` | Bucket Busker | ⚠️ Faceted and on-palette, but reads as a barrel with a hose more than stacked paint buckets. |
-| `images/char-02-metal-turnaround.jpg` | Metal | ✅ Strong silhouette (C1). Smoother than C5, two side views instead of a back. |
-| `images/char-03-country-turnaround.jpg` | Country | ✅ Front, back, side. Undershirt switches orange/teal; teal is canonical. |
-| `images/char-04-jazz-turnaround.jpg` | Jazz | ⚠️ Headwear changes (beanie vs headband), no side view. Purple beanie is canonical. Re-roll. |
+| `images/char-01-rap-turnaround.jpg` | Rap | ✅ Style anchor (C5, C7). Front crop `char-01-rap-front.jpg` is the faceted `--sref` for all hero prompts. |
+| `images/char-01-rap-map.jpg` | Rap (map) | ⚠️ Pixel textures fit C4, proportions still lanky. Re-run with the chibi-first prompt. |
+| `images/char-00-busker-instrument.jpg` | Bucket Busker | ✅ Faceted. Reads as a barrel with a hose more than paint buckets; fine as direction. |
+| `images/explore/char-00-busker-*.jpg` | Bucket Busker | ❌ Smooth/Pixar shading (breaks C7). Kept as outfit reference: patched beanie, mustard patch bomber, camo cargos. A-pose and expressions worked well compositionally. |
+| `images/explore/char-02-metal-*.jpg` | Metal | ❌ Smooth (breaks C7). Outfit reference. |
+| `images/explore/char-03-country-*.jpg` | Country | ❌ Smooth (breaks C7). Outfit reference; teal undershirt canonical. |
+| `images/explore/char-04-jazz-*.jpg` | Jazz | ❌ Smooth, inconsistent headwear (breaks C7). Outfit reference; purple beanie canonical. |
 
 Learned: single-figure front crops as `--oref` fixed the lineup problem; the busker A-pose and expressions came back as one figure each.
 

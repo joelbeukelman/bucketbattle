@@ -3,28 +3,28 @@
   "styleRefs": {
     "hero": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/ref-005-characters-battle-scale-drummers.jpg",
     "map": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/ref-004-characters-map-scale.jpg",
-    "faceted": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/char-01-rap-turnaround.jpg"
+    "faceted": "https://raw.githubusercontent.com/joelbeukelman/bucketbattle/main/docs/references/images/char-01-rap-front.jpg"
   },
   "styles": {
-    "hero": "low-poly faceted 3D game character, hard flat-shaded polygon facets, lanky stylized proportions about 6.5 heads tall, thin limbs, large ears, big dark heavy-lidded eyes, deadpan expression, oversized shoes, plain neutral gray studio background, soft even lighting",
+    "hero": "hard-edged low-poly 3D game character, sharp angular mesh with clearly visible flat triangle facets, no smooth surfaces, lanky stylized proportions about 6.5 heads tall, thin limbs, large ears, big dark heavy-lidded eyes, deadpan expression, oversized shoes, plain neutral gray studio background, soft even lighting",
     "map": "chunky chibi 3D game character, short stubby body about 3 heads tall, oversized head, hands and sneakers, blocky voxel-like low-poly with crisp pixel-art textures, plain muted teal background",
-    "prop": "low-poly faceted 3D game prop, hard flat-shaded polygon facets, painted flat textures, plain neutral gray studio background, soft even lighting"
+    "prop": "hard-edged low-poly 3D game prop, sharp angular mesh with clearly visible flat facets, painted flat textures, plain neutral gray studio background, soft even lighting"
   },
   "sheets": [
     {
       "id": "turnaround",
       "label": "Hero turnaround",
-      "why": "Front, 3/4, side and back of the same outfit. Used for modeling and image-to-3D. Once one is in the repo, it becomes this character's reference for the other sheets.",
+      "why": "Front, 3/4, side and back of the same outfit, in the hard-faceted style. Used for modeling and image-to-3D. Once accepted, Claude crops a single front figure from it as this character's reference.",
       "template": "3D character design reference sheet, the same character shown four times left to right: front view, three-quarter view, side profile, back view, identical outfit and hat in every view, full body standing straight, empty hands relaxed at sides, {LOOK}, {STYLE:hero}",
-      "params": "--ar 16:9 --style raw --sref {HERO_SREF} {FACETED_SREF} --no text, labels, instrument, props, cropped feet",
+      "params": "--ar 16:9 --style raw --sref {HERO_SREF} {FACETED_SREF} --sw 250 --no text, labels, instrument, props, cropped feet, smooth shading, pixar style, plastic, glossy, subsurface skin, realistic",
       "charRef": null
     },
     {
       "id": "apose",
       "label": "A-pose",
       "why": "One pose per image, front and side, for rigging. References the single-figure front crop only (no group-shot style refs), so Midjourney returns one character instead of a lineup.",
-      "template": "full body 3D character model of one character standing in a neutral A-pose, {VARIANT}, arms straight and held out 45 degrees from the body, palms facing down, legs slightly apart, single character, centered, full figure in frame, {IDENTITY}, low-poly faceted 3D game character, hard flat-shaded polygon facets, large ears, big dark heavy-lidded eyes, plain neutral gray studio background, soft even lighting",
-      "params": "--ar 2:3 --style raw {CHAR_REF:strong} --no multiple characters, lineup, turnaround, text, instrument",
+      "template": "full body 3D character model of one character standing in a neutral A-pose, {VARIANT}, arms straight and held out 45 degrees from the body, palms facing down, legs slightly apart, single character, centered, full figure in frame, {IDENTITY}, hard-edged low-poly 3D game character, sharp angular mesh with visible flat facets, no smooth surfaces, large ears, big dark heavy-lidded eyes, plain neutral gray studio background, soft even lighting",
+      "params": "--ar 2:3 --style raw --sref {FACETED_SREF} --sw 250 {CHAR_REF:strong} --no multiple characters, lineup, turnaround, text, instrument, smooth shading, pixar style, plastic, glossy, subsurface skin, realistic",
       "charRef": "strong",
       "variants": [
         {
@@ -43,8 +43,8 @@
       "id": "expressions",
       "label": "Expressions",
       "why": "One face per image, square close-ups. Six emotions for battle reactions.",
-      "template": "close-up portrait of one 3D game character, head and shoulders, facing the camera, {VARIANT}, {IDENTITY}, low-poly faceted 3D game character, hard flat-shaded polygon facets, large ears, big dark heavy-lidded eyes, plain neutral gray studio background, soft even lighting",
-      "params": "--ar 1:1 --style raw {CHAR_REF:strong} --no multiple characters, lineup, text, full body",
+      "template": "close-up portrait of one 3D game character, head and shoulders, facing the camera, {VARIANT}, {IDENTITY}, hard-edged low-poly 3D game character, sharp angular mesh with visible flat facets, no smooth surfaces, large ears, big dark heavy-lidded eyes, plain neutral gray studio background, soft even lighting",
+      "params": "--ar 1:1 --style raw --sref {FACETED_SREF} --sw 250 {CHAR_REF:strong} --no multiple characters, lineup, text, full body, smooth shading, pixar style, plastic, glossy, subsurface skin, realistic",
       "charRef": "strong",
       "variants": [
         {
@@ -84,7 +84,7 @@
       "label": "Instrument",
       "why": "The drum alone in three views, modeled as a separate part. No character reference, so no person sneaks in.",
       "template": "game prop turnaround sheet of a single object: {INSTRUMENT}, shown three times: front view, side view, top-down view, isolated object, no people, {STYLE:prop}",
-      "params": "--ar 16:9 --style raw --sref {FACETED_SREF} --no hands, people, character, text",
+      "params": "--ar 16:9 --style raw --sref {FACETED_SREF} --no hands, people, character, text, smooth shading, pixar style, plastic, glossy, subsurface skin, realistic",
       "charRef": null
     },
     {
@@ -102,17 +102,9 @@
       "name": "Bucket Busker",
       "genre": "Level 1 opener",
       "have": [
-        "turnaround",
-        "front",
-        "apose-front",
-        "expressions-neutral",
-        "expressions-focused",
-        "expressions-surprised",
-        "expressions-triumphant",
-        "expressions-defeated",
         "instrument"
       ],
-      "note": "Got A-pose front, 5 of 6 expressions and the instrument (2026-10-29). Still needed: A-pose side, Smug, Map version. Expressions came back full body instead of close-ups; faces still read well, so they're accepted. Neutral is off-model (green vest body, mustard sleeves): re-roll it. The busker renders smooth/Pixar-like rather than faceted (C5) in every image; decide whether that's OK for a grown-up NPC or re-roll with the faceted style reference. Instrument came out as a barrel-style bucket with a hubcap and a hose; usable as a direction, but less 'paint bucket' than the brief.",
+      "note": "Must be hard-faceted poly like the kids (decided 2026-10-29). The first busker set was smooth/Pixar-like and moved to images/explore/ as outfit reference; the outfit stays. Re-roll the turnaround first, then the rest. The instrument sheet is faceted and kept.",
       "look": "young street performer, light skin, black knit beanie with neon patches, oversized mustard bomber jacket covered in small sewn-on patches over a dark green hoodie, cuffed camo cargo pants, black and red high-top sneakers",
       "identity": "young street performer, black patched beanie, mustard patch-covered bomber jacket, dark green hoodie, camo cargo pants, black and red high-tops",
       "instrument": "a stack of upturned plastic paint buckets in different sizes with a hubcap used as a cymbal and drumsticks wrapped in grip tape"
@@ -126,7 +118,7 @@
         "map",
         "front"
       ],
-      "note": "Turnaround is the best match for the hero style so far, and is used as an extra style reference for everyone. The map version kept lanky proportions; re-run it with the new chibi-first prompt.",
+      "note": "The style anchor: its front crop is the faceted --sref for every hero prompt. The map version kept lanky proportions; re-run it with the chibi-first prompt.",
       "look": "teen drummer, medium brown skin, short twists, backward black snapback, thick gold cuban chain, oversized slate-blue hoodie with orange and navy patterned cuffs, black shorts, white tube socks with red stripes, chunky gray and yellow platform sneakers",
       "identity": "teen boy, medium brown skin, short twists, backward black snapback, thick gold chain, slate-blue hoodie with orange patterned cuffs, black shorts, red-striped white tube socks, chunky gray and yellow sneakers",
       "instrument": "small red snare drum with drumsticks"
@@ -135,11 +127,8 @@
       "id": "02-metal",
       "name": "Metal",
       "genre": "Metal",
-      "have": [
-        "turnaround",
-        "front"
-      ],
-      "note": "Strong silhouette (beanie, sunglasses, long hair). Rendered smoother than the faceted target and has two side views instead of a back view. Good enough as a reference; optional re-roll.",
+      "have": [],
+      "note": "First turnaround was smooth, not faceted; moved to images/explore/ as outfit reference. Re-roll the turnaround in the hard-faceted style.",
       "look": "very tall lanky teen drummer, light tan skin, very long straight black hair, black beanie, black square sunglasses, oversized black tee with a neon graffiti graphic, ripped teal skinny jeans, stacks of colorful wristbands and rings, black and red high-top sneakers",
       "identity": "very tall lanky teen, long straight black hair, black beanie, black square sunglasses, oversized black tee with neon graffiti graphic, ripped teal skinny jeans, colorful wristbands, black and red high-tops",
       "instrument": "two upturned black buckets rigged as a double-bass kit with drumsticks"
@@ -148,11 +137,8 @@
       "id": "03-country",
       "name": "Country",
       "genre": "Country",
-      "have": [
-        "turnaround",
-        "front"
-      ],
-      "note": "Good: has front, back and side. The undershirt changes from orange to teal between views; teal is used as canonical.",
+      "have": [],
+      "note": "First turnaround was smooth, not faceted; moved to images/explore/ as outfit reference (teal undershirt is canonical). Re-roll the turnaround in the hard-faceted style.",
       "look": "teen drummer, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel shirt over a teal t-shirt, thin silver chain, small gold earring, dark gray skinny jeans, mustard work boots",
       "identity": "teen boy, deep brown skin, wide-brim tan cowboy hat, open red and navy plaid flannel over a teal t-shirt, dark gray skinny jeans, mustard work boots",
       "instrument": "orange snare drum on a shoulder strap with drumsticks"
@@ -161,11 +147,8 @@
       "id": "04-jazz",
       "name": "Jazz",
       "genre": "Jazz",
-      "have": [
-        "turnaround",
-        "front"
-      ],
-      "note": "Headwear changes between views (purple beanie twice, a patterned headband once) and there's no side view. Purple beanie is used as canonical. Re-roll the turnaround before modeling.",
+      "have": [],
+      "note": "First turnaround was smooth and inconsistent; moved to images/explore/ as outfit reference (purple beanie is canonical). Re-roll the turnaround in the hard-faceted style.",
       "look": "small teen drummer, light tan skin, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal socks with red stripes, tan suede boots, stacked colorful wristbands, ear piercings",
       "identity": "small teen girl, two long black braids, purple knit beanie, white t-shirt, black suspenders, black cuffed shorts, teal striped socks, tan suede boots",
       "instrument": "snare drum with a pair of wire brushes"
