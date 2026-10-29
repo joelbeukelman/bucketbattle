@@ -103,9 +103,16 @@
       "genre": "Level 1 opener",
       "have": [
         "turnaround",
-        "front"
+        "front",
+        "apose-front",
+        "expressions-neutral",
+        "expressions-focused",
+        "expressions-surprised",
+        "expressions-triumphant",
+        "expressions-defeated",
+        "instrument"
       ],
-      "note": "Turnaround is inconsistent: the second view has a different patch-covered jacket and a pom-pom beanie, and there's no back view. Usable as a reference, but re-roll the turnaround before modeling.",
+      "note": "Got A-pose front, 5 of 6 expressions and the instrument (2026-10-29). Still needed: A-pose side, Smug, Map version. Expressions came back full body instead of close-ups; faces still read well, so they're accepted. Neutral is off-model (green vest body, mustard sleeves): re-roll it. The busker renders smooth/Pixar-like rather than faceted (C5) in every image; decide whether that's OK for a grown-up NPC or re-roll with the faceted style reference. Instrument came out as a barrel-style bucket with a hubcap and a hose; usable as a direction, but less 'paint bucket' than the brief.",
       "look": "young street performer, light skin, black knit beanie with neon patches, oversized mustard bomber jacket covered in small sewn-on patches over a dark green hoodie, cuffed camo cargo pants, black and red high-top sneakers",
       "identity": "young street performer, black patched beanie, mustard patch-covered bomber jacket, dark green hoodie, camo cargo pants, black and red high-tops",
       "instrument": "a stack of upturned plastic paint buckets in different sizes with a hubcap used as a cymbal and drumsticks wrapped in grip tape"

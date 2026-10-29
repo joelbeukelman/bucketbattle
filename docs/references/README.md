@@ -168,9 +168,14 @@ and show on the run sheet. The descriptions in prompt-kit.json were rewritten to
 | `images/char-01-rap-turnaround.jpg` | Rap | ✅ Best match to C5 (hard facets, ears, eyes, chunky shoes). Used as an extra style reference for everyone. |
 | `images/char-01-rap-map.jpg` | Rap (map) | ⚠️ Pixel textures fit C4, but proportions are still lanky; kit props drawn separately. Re-run with the chibi-first prompt. |
 | `images/char-00-busker-turnaround.jpg` | Bucket Busker | ⚠️ Inconsistent between views (jacket, beanie), no back view, smoother than C5. Re-roll. |
+| `images/char-00-busker-apose-front.jpg` | Bucket Busker | ✅ Clean front A-pose, outfit matches the turnaround. Usable for rigging. |
+| `images/char-00-busker-expressions-*.jpg` | Bucket Busker | ✅ focused, surprised, triumphant, defeated read clearly (full body, not close-ups). ⚠️ neutral is off-model (green vest). Smug still missing. |
+| `images/char-00-busker-instrument.jpg` | Bucket Busker | ⚠️ Faceted and on-palette, but reads as a barrel with a hose more than stacked paint buckets. |
 | `images/char-02-metal-turnaround.jpg` | Metal | ✅ Strong silhouette (C1). Smoother than C5, two side views instead of a back. |
 | `images/char-03-country-turnaround.jpg` | Country | ✅ Front, back, side. Undershirt switches orange/teal; teal is canonical. |
 | `images/char-04-jazz-turnaround.jpg` | Jazz | ⚠️ Headwear changes (beanie vs headband), no side view. Purple beanie is canonical. Re-roll. |
+
+Learned: single-figure front crops as `--oref` fixed the lineup problem; the busker A-pose and expressions came back as one figure each.
 
 Learned: Midjourney drifts toward smooth "Pixar" shading unless a faceted image is in `--sref`. Adding the rap
 turnaround as a second style reference is the fix.
